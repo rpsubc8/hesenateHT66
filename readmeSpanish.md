@@ -60,3 +60,10 @@ O bien:
 </pre>
 
 El W/N se refiere a la expansión de la banda, que para PMR tiene que ser Narrow. El modo Wide sería para el caso de experimentar con modos digitales en modo analógico, para evitar la pre-emphasis y de-emphasis de los filtros de entrada y salida de micrófono y altavoz.
+
+
+<br>
+<h1>Manual</h1>
+He dejado un manual en español convertido a OCR y PDF:<br><br>
+<a href='https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf'>https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf</a>
+<br><br>
