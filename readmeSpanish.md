@@ -10,6 +10,8 @@ El talkie HESENATE HT66 está pensado para cumplir la norma PMR446, de manera qu
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewabout.gif'></center>
 Dicho software, se puede descargar desde: <a href='https://cps22.s3.amazonaws.com/HT66.exe'>https://cps22.s3.amazonaws.com/HT66.exe</a><br>
 <br>
+O desde: <a href='https://github.com/rpsubc8/hesenateHT66/tree/main/originalHT66'>https://github.com/rpsubc8/hesenateHT66/tree/main/originalHT66</a><br>
+<br>
 He dejado una versión portable (portableHT66.zip) sin falta de instalar, con la modificación de la potencia a high ya por defecto:<br><br>
 <a href='https://github.com/rpsubc8/hesenateHT66/tree/main/portableHT66'>https://github.com/rpsubc8/hesenateHT66/tree/main/portableHT66</a>
 <br><br>
