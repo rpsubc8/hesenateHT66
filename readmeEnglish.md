@@ -10,6 +10,8 @@ The HESENATE HT66 walkie-talkie is designed to comply with the PMR446 standard, 
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewabout.gif'></center>
 This software can be downloaded from: <a href='https://cps22.s3.amazonaws.com/HT66.exe'>https://cps22.s3.amazonaws.com/HT66.exe</a><br>
 <br>
+Or from: <a href='https://github.com/rpsubc8/hesenateHT66/tree/main/originalHT66'>https://github.com/rpsubc8/hesenateHT66/tree/main/originalHT66</a><br>
+<br>
 I have provided a portable version (portableHT66.zip) that does not require installation, with the power set to high by default:<br><br>
 <a href='https://github.com/rpsubc8/hesenateHT66/tree/main/portableHT66'>https://github.com/rpsubc8/hesenateHT66/tree/main/portableHT66</a>
 <br><br>
