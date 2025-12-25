@@ -60,3 +60,10 @@ Or:
 </pre>
 
 W/N refers to bandwidth expansion, which for PMR must be Narrow. Wide mode would be used when experimenting with digital modes in analogue mode, to avoid pre-emphasis and de-emphasis of the microphone and speaker input and output filters.
+
+
+<br>
+<h1>Help manual</h1>
+I have left a manual in Spanish converted to OCR and PDF:<br><br>
+<a href='https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf'>https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf</a>
+<br><br>
