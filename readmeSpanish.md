@@ -102,7 +102,7 @@ Los pasos a seguir son seleccionar dicho combo, así como dar a NEW y ver que qu
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewclear87to470.gif'></center>
 Después debemos de cargar el dat que hemos generado con la utilidad HTML, desde el menú.<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewOpen.gif'></center>
-Luego podmos generar el archivo desde el html5, pulsando el botón LPD(01-16) para generar los 16 primeros canales de LPD:<br>
+Luego podemos generar el archivo desde el html5, pulsando el botón LPD(01-16) para generar los 16 primeros canales de LPD:<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewhtml5lpd.gif'></center>
 Si abrimos el archivo customLPD.dat generado con la utilidad HTML con las frecuencias LPD, nos aparecerá algo similar:<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewLPD.gif'></center>
