@@ -70,8 +70,12 @@ He dejado un manual en español convertido a OCR y PDF:<br><br>
 <a href='https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf'>https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf</a>
 
 
-<br>
-<h1>Frecuencias</h1>
 <br><br>
-He creado una utilidad en HTML5 para poder modificar todos los parámetros bloqueados, en donde se encuentran también las frecuencias.
-<a href='https://github.com/rpsubc8/hesenateHT66/tree/main/html5/index.html'>https://github.com/rpsubc8/hesenateHT66/tree/main/html5/index.html</a>
+<h1>Frecuencias</h1>
+He creado una utilidad en HTML5 para poder modificar todos los parámetros bloqueados, en donde se encuentran también las frecuencias.<br><br>
+<a href='https://rpsubc8.github.io/hesenateHT66/'>https://rpsubc8.github.io/hesenateHT66/</a><br>
+Se dispone de un botón para generar el .DAT para las frecuencias por defecto PMR 446, así como LPD. Dado que se tiene 16 canales y el LPD son 69, he dejado varios grupos.<br>
+Para el caso de FM (comercial) hay que tener cuidado con el PTT en la transmisión, dado que no está bloqueada por hardware y transmitirá en FM en potencia LOW (500 o 700 mw), que es ilegal.<br>
+En el Setting.ini  dejado un rango de 80 Mhz a 470 Mhz.
+
+<br><br>
