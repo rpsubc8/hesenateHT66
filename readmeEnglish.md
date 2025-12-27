@@ -58,6 +58,8 @@ What we are interested in is the last byte of each line, which should be:
 Or:
 <pre>
  FB   --> High  Wide
+ F3   --> Low  Wide
+ F7   --> Low Narrow
 </pre>
 
 W/N refers to bandwidth expansion, which for PMR must be Narrow. Wide mode would be used when experimenting with digital modes in analogue mode, to avoid pre-emphasis and de-emphasis of the microphone and speaker input and output filters.
