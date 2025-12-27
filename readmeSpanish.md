@@ -96,7 +96,7 @@ Las opciones son:<br><br>
 <br>
 Para el caso de FM (comercial) hay que tener cuidado con el PTT en la transmisión, dado que no está bloqueada por hardware y transmitirá en FM en potencia LOW (500 o 700 mw), que es ilegal, por tanto es sólo para experimentación. Se genera con modo WIDE.<br>
 
-En el programa portable de HT66 he modificado el Setting.ini para un rango de 80 Mhz a 470 Mhz, que debemos siempre asegurarnos de que está seleccionado dicho combo.<br>
+En el programa portable de HT66 he modificado el Setting.ini para un rango de 87 Mhz a 470 Mhz, que debemos siempre asegurarnos de que está seleccionado dicho combo.<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/preview87to470.gif'></center>
 Los pasos a seguir son seleccionar dicho combo, así como dar a NEW y ver que queda vacio:<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewclear87to470.gif'></center>
