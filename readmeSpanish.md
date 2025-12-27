@@ -100,14 +100,13 @@ En el programa portable de HT66 he modificado el Setting.ini para un rango de 87
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/preview87to470.gif'></center>
 Los pasos a seguir son seleccionar dicho combo, así como dar a NEW y ver que queda vacio:<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewclear87to470.gif'></center>
-Después debemos de cargar el dat que hemos generado con la utilidad HTML.<br>
-Luego debemos de cargarlo desde el menú:<br>
+Después debemos de cargar el dat que hemos generado con la utilidad HTML, desde el menú.<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewOpen.gif'></center>
 Luego podmos generar el archivo desde el html5, pulsando el botón LPD(01-16) para generar los 16 primeros canales de LPD:<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewhtml5lpd.gif'></center>
 Si abrimos el archivo customLPD.dat generado con la utilidad HTML con las frecuencias LPD, nos aparecerá algo similar:<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewLPD.gif'></center>
-Las frecuencias, que en este caso para LPD son 433 Mhz, nunca o se verán reflejadas en el programa, sólo la potencia y el ancho de banda, dado que es una limitación del programa. Debemos de chequear que realmente se van a grabar las frecuencias, es decir, que se ha leido bien. Para ello debemos desde el menú mandar guardar, por ejemplo con el nombre customLPDchk.dat y contrastar que tanto customLPD.dat como customLPDchk.dat son iguales con un editor de textos, como puede ser el notepad++.<br>
+Las frecuencias, que en este caso para LPD son 433 Mhz, nunca se verán reflejadas en el programa, sólo la potencia y el ancho de banda, dado que es una limitación del programa. Debemos de chequear que realmente se van a grabar las frecuencias, es decir, que se ha leido bien. Para ello debemos desde el menú mandar guardar, por ejemplo con el nombre customLPDchk.dat y contrastar que tanto customLPD.dat como customLPDchk.dat son iguales con un editor de textos, como puede ser el notepad++.<br>
 Debemos chequear ese archivo customLPDchk.dat desde la utilidad html5 desde el bótn examinar, y luego dando al botón Load. Si en algún momento, vemos que las frecuencias no son las correctas, es decir, que esperamos 433 Mhz y nos sale 153 Mhz, como aquí:<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewhtml5lpderror.gif'></center>
 Pues tendremos que volver a seguir los mismos pasos en el programa portable, es decir, volver abrir el archivo customLPD.dat y volver a guardarlo como customLPDchk.dat, para volver a chequear que son iguales y desde el html5 salen las frecuencias correctas. Suele salir a la primera, pero en ocasiaones hay que realizar estos pasos 2 veces.<br>
