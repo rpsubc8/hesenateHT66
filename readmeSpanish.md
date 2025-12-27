@@ -57,6 +57,8 @@ Lo que nos interesa en el último byte de cada línea, que debe ser:
 O bien:
 <pre>
  FB   --> High  Wide
+ F3   --> Low  Wide
+ F7   --> Low Narrow
 </pre>
 
 El W/N se refiere a la expansión de la banda, que para PMR tiene que ser Narrow. El modo Wide sería para el caso de experimentar con modos digitales en modo analógico, para evitar la pre-emphasis y de-emphasis de los filtros de entrada y salida de micrófono y altavoz.
@@ -66,4 +68,10 @@ El W/N se refiere a la expansión de la banda, que para PMR tiene que ser Narrow
 <h1>Manual</h1>
 He dejado un manual en español convertido a OCR y PDF:<br><br>
 <a href='https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf'>https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf</a>
+
+
+<br>
+<h1>Frecuencias</h1>
 <br><br>
+He creado una utilidad en HTML5 para poder modificar todos los parámetros bloqueados, en donde se encuentran también las frecuencias.
+<a href='https://github.com/rpsubc8/hesenateHT66/tree/main/html5/index.html'>https://github.com/rpsubc8/hesenateHT66/tree/main/html5/index.html</a>
