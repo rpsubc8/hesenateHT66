@@ -2,7 +2,8 @@
 
 <h1>Disclaimer</h1>
 In accordance with the telecommunications regulations of each country, the PMR446 standard limits transmission power to a maximum of 500 mW.
-The responsibility for making this modification therefore lies with the user.
+The responsibility for making this modification therefore lies with the user.<br>
+The LPD 433 standard only allows a maximum power of 10 mW, so the 500 or 700 mW of power is a problem. 
 <br><br>
 
 <h1>Preparation</h1>
@@ -75,19 +76,19 @@ I have created an HTML5 utility to modify all locked parameters, including frequ
 There is a button to generate the .DAT file for the default frequencies for PMR 446 and LPD. Since there are 16 channels and 69 LPD channels, I have left several groups.<br>
 The options are:<br><br>
 
-| Button        | Action                             |
-| ------------- | ---------------------------------- |
-| PMR 446       | Generates the 16 PMR channels      |
-| LPD(01-16)    | Generates channels 1 to 16 of LPD  |
-| LPD(17-32)    | Generates channels 17 to 32 of LPD |
-| LPD(33-48)    | Generates channels 33 to 48 of LPD |
-| LPD(54-69)    | Generates channels 54 to 69 of LPD |
-| FM(comercial) | A pair of FM chains                |
-| Clear         | Delete everything                  |
-| Save          | Save the file physically           |
-| Browse        | Select file (does not read it)     |
-| Load          | read the selected file             |
-| Start         | Generate the file                  |
+| Button         | Action                             |
+| -------------- | ---------------------------------- |
+| PMR 446        | Generates the 16 PMR channels      |
+| LPD(01-16)     | Generates channels 1 to 16 of LPD  |
+| LPD(17-32)     | Generates channels 17 to 32 of LPD |
+| LPD(33-48)     | Generates channels 33 to 48 of LPD |
+| LPD(54-69)     | Generates channels 54 to 69 of LPD |
+| FM(commercial) | A pair of FM chains                |
+| Clear          | Delete everything                  |
+| Save           | Save the file physically           |
+| Browse         | Select file (does not read it)     |
+| Load           | read the selected file             |
+| Start          | Generate the file                  |
 
 
 <br>
