@@ -77,6 +77,29 @@ He dejado un manual en español convertido a OCR y PDF:<br><br>
 
 <br><br>
 <h1>Frecuencias</h1>
+En el programa Portable ya tenemos el archivo Setting.ini modificado, pero sino tendremos que crear una entrada que amplie el rango de 1 a 590 Mhz, en lugar de los 446 Mhz:<br>
+<pre>
+Language = English
+Comport = 14
+masterkey = 123456
+RadioName = [M31_Analog_Redio]
+
+[Frequency]
+Fqvalue0 = [446-446.2MHz]
+Datamin0 = 446
+Datamax0 = 446.2
+
+Fqvalue1 = [1-590MHz]
+Datamin1 = 1
+Datamax1 = 590
+
+[Channel]
+Channel = 16
+Communication = TCOGRAM
+</pre>
+
+Si no tenemos esta entrada Fqvalue1, así como el combo seleccionado, se aplicará el filtro de PMR, que junto con las limitaciones del programa, al final se traducirá en un recorte de frecuencias a las de por defecto. Es decir, que asignará la banda PMR americana (425 Mhz), que nada tiene que ver con la Europea (446 Mhz). Lo mismo sucederá si empezamos a tocar el combo de frecuencias.<br>
+
 He creado una utilidad en HTML5 para poder modificar todos los parámetros bloqueados, en donde se encuentran también las frecuencias.<br><br>
 <a href='https://rpsubc8.github.io/hesenateHT66/'>https://rpsubc8.github.io/hesenateHT66/</a><br><br>
 Se dispone de un botón para generar el .DAT para las frecuencias por defecto para PMR 446, así como LPD. Dado que se tiene 16 canales y el LPD son 69, he dejado varios grupos.<br>
@@ -119,6 +142,11 @@ Debemos chequear ese archivo customLPDchk.dat desde la utilidad html5 desde el b
 Pues tendremos que volver a seguir los mismos pasos en el programa portable, es decir, volver abrir el archivo customLPD.dat y volver a guardarlo como customLPDchk.dat, para volver a chequear que son iguales y desde el html5 salen las frecuencias correctas. Suele salir a la primera, pero en ocasiones hay que realizar estos pasos 2 veces.<br>
 Es importante, porque en el programa estamos ciegos en el tema de frecuencias, al no mostrarse, y dependemos de la versión html para contrastar. Si no es correcto, apareceremos por frecuencias y potencias que no están homologadas. Es ideal tener otro talkie de los buenos,que permita chequear también si todo es correcto.<br><br>
 
+Una vez que el chequeo y todo es correcto, es cuando podemos darle a enviar los datos a la radio.<br>
+
 El HESENATE HT66 soporta FM comercial, tanto recepción como transmisión, 136 Mhz, 140 Mhz y los 400 Mhz. Otra cosa distinta, es como se comporta.<br>
-Soporta 11 metros (27 mhz) CB en modo FM, pero con la limitación de la antena. Con un talkie Alan Midland 42 a una distancia de 1 metro, la señal para modo LOW es de 3 sobre 9, mientras que con HIGH es de 5 sobre 9. Sirve por tanto, para pruebas simples.
+Soporta 11 metros (27 mhz) CB en modo FM, pero con la limitación de la antena. Con un talkie Alan Midland 42 a una distancia de 1 metro, la señal para modo LOW es de 3 sobre 9, mientras que con HIGH es de 5 sobre 9. Sirve por tanto, para pruebas simples.<br>
+Con la utilidad en html5 se puede probar todo el rango de frecuencias que queramos, con tan sólo introducirlas a mano y darle a start para generar el custom.dat. De esta forma, podremos ver los límites del talkie.<br>
+
+Debemos prestar atención que el archivo .DAT debe tener exactamente 974 bytes.
 <br><br>
