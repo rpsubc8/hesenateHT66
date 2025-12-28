@@ -3,7 +3,11 @@
 <h1>Disclaimer</h1>
 In accordance with the telecommunications regulations of each country, the PMR446 standard limits transmission power to a maximum of 500 mW.
 The responsibility for making this modification therefore lies with the user.<br>
-The LPD 433 standard only allows a maximum power of 10 mW, so the 500 or 700 mW of power is a problem. 
+The LPD 433 standard only allows a maximum power of 10 mW, so the 500 or 700 mW of power is a problem.<br>
+On commercial FM (87.5 MHz to 108.0 MHz), everything is prohibited.<br>
+On CB 27 MHz, 4W is permitted for FM mode.<br>
+The remaining frequencies have their own regulations, both in amateur radio bands and for private use, which must be consulted individually.<br>
+Ignorance of the law does not exempt one from compliance.
 <br><br>
 
 <h1>Preparation</h1>
@@ -73,6 +77,29 @@ I have left a manual in Spanish converted to OCR and PDF:<br><br>
 
 
 <h1>Frequencies</h1>
+In the Portable programme, we already have the modified Setting.ini file, but if not, we will have to create an entry that extends the range from 1 to 590 MHz, instead of 446 MHz:<br>
+<pre>
+Language = English
+Comport = 14
+masterkey = 123456
+RadioName = [M31_Analog_Redio]
+
+[Frequency]
+Fqvalue0 = [446-446.2MHz]
+Datamin0 = 446
+Datamax0 = 446.2
+
+Fqvalue1 = [1-590MHz]
+Datamin1 = 1
+Datamax1 = 590
+
+[Channel]
+Channel = 16
+Communication = TCOGRAM
+</pre>
+
+If we do not have this Fqvalue1 entry, as well as the selected combo, the PMR filter will be applied, which, together with the programme's limitations, will ultimately result in a cut-off of frequencies to the default ones. In other words, it will assign the American PMR band (425 MHz), which has nothing to do with the European band (446 MHz). The same will happen if we start to change the frequency combo.<br>
+
 I have created an HTML5 utility to modify all locked parameters, including frequencies.<br><br>
 <a href='https://rpsubc8.github.io/hesenateHT66/'>https://rpsubc8.github.io/hesenateHT66/</a><br><br>
 There is a button to generate the .DAT file for the default frequencies for PMR 446 and LPD. Since there are 16 channels and 69 LPD channels, I have left several groups.<br>
@@ -86,6 +113,9 @@ The options are:<br><br>
 | LPD(33-48)     | Generates channels 33 to 48 of LPD |
 | LPD(54-69)     | Generates channels 54 to 69 of LPD |
 | FM(commercial) | A pair of FM chains                |
+| CB(01-16)      | Generates channels 1 to 16 of CB   |
+| CB(17-32)      | Generates channels 17 to 32 of CB  |
+| CB(25-40)      | Generates channels 25 to 40 of CB  |
 | Clear          | Delete everything                  |
 | Save           | Save the file physically           |
 | Browse         | Select file (does not read it)     |
@@ -96,9 +126,9 @@ The options are:<br><br>
 <br>
 In the case of FM (commercial), care must be taken with the PTT during transmission, as it is not blocked by hardware and will transmit on FM at LOW power (500 or 700 mW), which is illegal, and is therefore only for experimental purposes. It is generated in WIDE mode.<br>
 
-In the HT66 portable programme, I have modified the Setting.ini for a range of 87 MHz to 470 MHz, and we must always ensure that this combo is selected.<br>
+In the HT66 portable programme, I have modified the Setting.ini for a range of 1 MHz to 590 MHz, and we must always ensure that this combo is selected.<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/preview87to470.gif'></center>
-The steps to follow are to select that combo box, click NEW, and check that it is empty:<br>
+Once again, we must double-check that we have the 1-590 MHz combo selected. The steps to follow are to select that combo box, click NEW, and check that it is empty:<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewclear87to470.gif'></center>
 Next, we must load the data we have generated with the HTML utility from the menu.<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewOpen.gif'></center>
@@ -112,5 +142,11 @@ We must check that customLPDchk.dat file from the html5 utility using the browse
 Well, we will have to follow the same steps again in the portable programme, that is, reopen the customLPD.dat file and save it again as customLPDchk.dat, to check again that they are the same and that the correct frequencies are coming out of the html5. It usually works the first time, but sometimes you have to do these steps twice.<br>
 This is important because in the programme we are blind to the issue of frequencies, as they are not displayed, and we rely on the HTML version to check. If it is not correct, we will appear with frequencies and powers that are not approved. It is ideal to have another good walkie-talkie, which also allows you to check that everything is correct.<br><br>
 
-The HESENATE HT66 supports commercial FM, both reception and transmission, 136 MHz, 140 MHz and 400 MHz. Another thing is how it performs.
+Once everything has been checked and is correct, we can send the data to the radio station.<br>
+
+The HESENATE HT66 supports commercial FM, both reception and transmission, 136 MHz, 140 MHz and 400 MHz. Another thing is how it performs.<br>
+It supports 11 metres (27 MHz) CB in FM mode, but with antenna limitations. With an Alan Midland 42 walkie-talkie at a distance of 1 metre, the signal for LOW mode is 3 out of 9, while for HIGH it is 5 out of 9. It is therefore suitable for simple tests.<br>
+With the HTML5 utility, you can test the entire range of frequencies you want, simply by entering them manually and clicking start to generate the custom.dat file. This way, you can see the limits of the walkie-talkie.<br>
+
+We must ensure that the .DAT file is exactly 974 bytes in size.
 <br><br>
