@@ -8,8 +8,8 @@
  </head>
  <body>
   <div id="divGlobal">
-   <div id="divLeft" style="float: left; width: 50%">   
-  
+   <!--<div id="divLeft" style="float: left; width: 50%">-->
+   <div id="divUp">
     <table>
      <tbody>
       <tr>
@@ -135,23 +135,90 @@
     </table>
    </div>
   
-   <div id="divRight" style="float: right; width: 50%">
-    <button type='button' id="btnPMR" onclick="ExecPMR()">PMR 446</button>
-    <button type='button' id="btnLPD0116" onclick="ExecLPD0116()">LPD(01-16)</button>
-    <button type='button' id="btnLPD1732" onclick="ExecLPD1732()">LPD(17-32)</button>
-    <button type='button' id="btnLPD3348" onclick="ExecLPD3348()">LPD(33-48)</button>
-    <button type='button' id="btnLPD4964" onclick="ExecLPD4964()">LPD(49-64)</button>
-    <button type='button' id="btnLPD5469" onclick="ExecLPD5469()">LPD(54-69)</button>
-	<button type='button' id="btnFM" onclick="ExecFM()">FM(comercial)</button>
-    <br><br>
-    <button type='button' id="btnClear" onclick="ExecClear()">Clear</button>
-	<button type='button' id="btnSave" onclick="ExecSaveDat()">Save</button><br>
-	<button type='button' id="btnLoad" onclick="ExecLoadDat()">Load</button>
-	<input type='file' id='fileinput'><br>
-	<!--<button type='button' id="btnReset" onclick="onClick='window.location.reload()'">Reset</button><br>-->
-    <button type='button' id="btnStart" onclick="ExecStart()">Start</button><br>
-	
-    <textarea id="txtareaOut" name="txtareaOut" rows="20" cols="54" readonly></textarea>    
+   <!--<div id="divRight" style="float: right; width: 50%">-->
+   <div id="divDown">
+    <table>
+     <tbody>
+	  <tr><th></th><td></td></tr> 
+	  <tr><th></th><td></td></tr> 
+	  <tr>
+	   <th>BANDS</th>
+	   <td></td>
+	  </tr>
+      <tr>
+	   <td>
+        <button type='button' id="btnPMR" onclick="ExecPMR()">PMR 446</button>
+	   </td>
+	  </tr>
+	  <tr>
+	   <td>
+	    <button type='button' id="btnLPD0116" onclick="cmbLPDClick('opcion1')">LPD(01-16)</button>
+		<button type='button' id="btnLPD1732" onclick="cmbLPDClick('opcion2')">LPD(17-32)</button>
+		<button type='button' id="btnLPD3348" onclick="cmbLPDClick('opcion3')">LPD(33-48)</button>
+		<button type='button' id="btnLPD4964" onclick="cmbLPDClick('opcion4')">LPD(49-64)</button>
+		<button type='button' id="btnLPD5469" onclick="cmbLPDClick('opcion5')">LPD(54-69)</button>
+	    <!--<select id="cmbLPD" onchange="cmbLPDClick(value)">-->
+	    <!-- <option selected value="opcion1" onclick="cmbLPDClick(value)">LPD(01-16)</option>-->
+	    <!-- <option value="opcion2" onclick="cmbLPDClick(value)">LPD(17-32)</option>-->
+	    <!-- <option value="opcion3" onclick="cmbLPDClick(value)">LPD(33-48)</option>-->
+	    <!-- <option value="opcion4" onclick="cmbLPDClick(value)">LPD(49-64)</option>-->
+	    <!-- <option value="opcion5" onclick="cmbLPDClick(value)">LPD(54-69)</option>-->
+	    <!--</select>-->
+	   </td>
+	  </tr>	  	  
+	  <tr>
+       <td>
+	    <button type='button' id="btnCB0116" onclick="cmbCBClick('opcion1')">CB(01-16)</button>
+		<button type='button' id="btnCB01732" onclick="cmbCBClick('opcion2')">CB(17-32)</button>
+		<button type='button' id="btnCB2540" onclick="cmbCBClick('opcion3')">CB(25-40)</button>
+	    <!--<select id="cmbCB" onchange="cmbCBClick(value)">-->
+	    <!-- <option selected value="opcion1" onclick="cmbCBClick(value)">CB(01-16)</option>-->
+	    <!-- <option value="opcion2" onclick="cmbCBClick(value)">CB(17-32)</option>-->
+	    <!-- <option value="opcion3" onclick="cmbCBClick(value)">CB(25-40)</option>-->
+	    <!--</select>-->
+       </td>
+	  </tr>
+	  <tr>
+	   <td>
+        <button type='button' id="btnFM" onclick="ExecFM()">FM(comercial)</button>
+	   </td>
+	  </tr>
+	  <tr><th></th><td></td></tr> 
+	  <tr><th></th><td></td></tr> 
+	  <tr>
+	   <th>OUTPUT</th>
+	   <td></td>
+	  </tr>	  
+	  <tr>	 
+	   <td>
+        <textarea id="txtareaOut" name="txtareaOut" rows="20" cols="54" readonly></textarea>
+	   </td>	   
+	  </tr>
+	  <tr><th></th><td></td></tr> 
+	  <tr><th></th><td></td></tr> 
+	  <tr>
+	   <th>ACTIONS</th>
+	   <td></td>
+	  </tr>
+	  <tr>
+	   <td>
+        <button type='button' id="btnClear" onclick="ExecClear()">Clear</button>
+	    <button type='button' id="btnSave" onclick="ExecSaveDat()">Save</button> 
+	   </td>
+	  </tr>
+	  <tr>
+	   <td>
+        <button type='button' id="btnLoad" onclick="ExecLoadDat()">Load</button>
+	    <input type='file' id='fileinput'>
+	   </td>
+	  </tr>
+	  <tr>
+	   <td>
+	    <button type='button' id="btnStart" onclick="ExecStart()">Start</button>
+	   </td>
+	  </tr>
+	 </tbody> 	
+ 	 <!--<button type='button' id="btnReset" onclick="onClick='window.location.reload()'">Reset</button><br>-->
    </div> 
  
   </div>
@@ -175,6 +242,9 @@
    var freqLPD3348=["43387500","43390000","43392500","43395000","43397500","43400000","43402500","43405000","43407500","43410000","43412500","43415000","43417500","43420000","43422500","43425000"];
    var freqLPD4964=["43427500","43430000","43432500","43435000","43437500","43440000","43442500","43445000","43447500","43450000","43452500","43455000","43457500","43460000","43462500","43465000"];
    var freqLPD5469=["43440000","43442500","43445000","43447500","43450000","43452500","43455000","43457500","43460000","43462500","43465000","43467500","43470000","43472500","43475000","43477500"];
+   var freqCB0116=["2696500","2697500","2698500","2700500","2701500","2702500","2703500","2705500","2706500","2707500","2708500","2710500","2711500","2712500","2713500","2715500"];
+   var freqCB1732=["2716500","2717500","2718500","2720500","2721500","2722500","2725500","2723500","2724500","2726500","2727500","2728500","2729500","2730500","2731500","2732500"];
+   var freqCB2540=["2724500","2726500","2727500","2728500","2729500","2730500","2731500","2732500","2733500","2734500","2735500","2736500","2737500","2738500","2739500","2740500"];
    var freqFM=["9590000","9700000","9710000","9715000","9720000","9725000","9730000","9740000","9795000","9810000","9840000","10180000","10300000","10310000","10315000","10320000"];
    
    function ExecStart()
@@ -304,20 +374,34 @@
     }	
    }
    
-   //LPD channel 1 to 16
-   function ExecLPD0116()
+
+   
+   //Generic LPD channel 01-16
+   function ExecLPD(opcion)
    {
+    var auxFreqLPD;
+   
     try
 	{
      ExecClear();
+	 
+	 switch (opcion)
+	 {
+	  case "opcion1": auxFreqLPD= freqLPD0116; break;
+	  case "opcion2": auxFreqLPD= freqLPD1732; break;
+	  case "opcion3": auxFreqLPD= freqLPD3348; break;
+	  case "opcion4": auxFreqLPD= freqLPD4964; break;
+	  case "opcion5": auxFreqLPD= freqLPD5469; break;
+	  default: auxFreqLPD= freqLPD0116; break;
+	 }		
 	
      for (var i=0;i<16;i++)
 	 {
       cadNameObj= "textrx"+(i+1).toString();	
-	  document.getElementById(cadNameObj).value = freqLPD0116[i]; //set rx freq
+	  document.getElementById(cadNameObj).value = auxFreqLPD[i]; //set rx freq
 	 
       cadNameObj= "texttx"+(i+1).toString();	
-	  document.getElementById(cadNameObj).value = freqLPD0116[i]; //set tx freq	 
+	  document.getElementById(cadNameObj).value = auxFreqLPD[i]; //set tx freq	 
 	 }
 	
 	 ExecStart();   
@@ -328,92 +412,31 @@
     }	
    }
    
-   //LPD channel 17 to 32
-   function ExecLPD1732()
-   {
-    try
-    {
-     ExecClear();
-	
-     for (var i=0;i<16;i++)
-	 {
-      cadNameObj= "textrx"+(i+1).toString();	
-	  document.getElementById(cadNameObj).value = freqLPD1732[i]; //set rx freq
-	 
-      cadNameObj= "texttx"+(i+1).toString();	
-	  document.getElementById(cadNameObj).value = freqLPD1732[i]; //set tx freq	 
-	 }
-	
-	 ExecStart();   
-	}
-    catch (error)
-    {
-     console.error(error);
-    }	
-   }   
    
-   //LPD channel 33 to 48
-   function ExecLPD3348()
+   //Generic CB 11m 27 mhz channel 01-16
+   function ExecCB(opcion)
    {
+    var auxFreqCB;
+	
     try
     {
      ExecClear();
 	
-     for (var i=0;i<16;i++)
+	 switch (opcion)
 	 {
-      cadNameObj= "textrx"+(i+1).toString();	
-	  document.getElementById(cadNameObj).value = freqLPD3348[i]; //set rx freq
-	 
-      cadNameObj= "texttx"+(i+1).toString();	
-	  document.getElementById(cadNameObj).value = freqLPD3348[i]; //set tx freq	 
-	 }
-	
-	 ExecStart();   
-	}
-    catch (error)
-    {
-     console.error(error);
-    }	
-   }   
-   
-   //LPD channel 49 to 64
-   function ExecLPD4964()
-   {
-    try
-	{
-     ExecClear();
+	  case "opcion1": auxFreqCB= freqCB0116; break;
+	  case "opcion2": auxFreqCB= freqCB1732; break;
+	  case "opcion3": auxFreqCB= freqCB2540; break;
+	  default: auxFreqCB= freqCB0116; break;
+	 }		
 	
      for (var i=0;i<16;i++)
 	 {
-      cadNameObj= "textrx"+(i+1).toString();	
-	  document.getElementById(cadNameObj).value = freqLPD4964[i]; //set rx freq
+      cadNameObj= "textrx"+(i+1).toString();
+	  document.getElementById(cadNameObj).value = auxFreqCB[i]; //set rx freq
 	 
-      cadNameObj= "texttx"+(i+1).toString();	
-	  document.getElementById(cadNameObj).value = freqLPD4964[i]; //set tx freq	 
-	 }
-	
-	 ExecStart();   
-	}
-    catch (error)
-    {
-     console.error(error);
-    }	
-   }      
-   
-   //LPD channel 54 to 69
-   function ExecLPD5469()
-   {
-    try
-	{
-     ExecClear();
-	
-     for (var i=0;i<16;i++)
-	 {
-      cadNameObj= "textrx"+(i+1).toString();	
-	  document.getElementById(cadNameObj).value = freqLPD5469[i]; //set rx freq
-	 
-      cadNameObj= "texttx"+(i+1).toString();	
-	  document.getElementById(cadNameObj).value = freqLPD5469[i]; //set tx freq	 
+      cadNameObj= "texttx"+(i+1).toString();
+	  document.getElementById(cadNameObj).value = auxFreqCB[i]; //set tx freq
 	 }
 	
 	 ExecStart();
@@ -422,8 +445,8 @@
     {
      console.error(error);
     }	
-   }   
-   
+   }
+
    
    //FM commercial
    function ExecFM()
@@ -648,6 +671,33 @@
     }
    }
    
+   //Combobox LPD select
+   function cmbLPDClick(opcion)
+   {
+    try
+    {	
+     //alert(opcion);
+	 ExecLPD(opcion);
+    }
+	catch (error)
+    {
+     console.error(error);
+    }     
+   }
+   
+   //Combobox CB select
+   function cmbCBClick(opcion)
+   {
+    try
+    {	
+     //alert(opcion);
+	 ExecCB(opcion);
+    }
+	catch (error)
+    {
+     console.error(error);
+    }   
+   }
 
    
    
