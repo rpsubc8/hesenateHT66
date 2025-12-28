@@ -130,7 +130,7 @@ En el programa portable de HT66 he modificado el Setting.ini para un rango de 1 
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/preview87to470.gif'></center>
 Los pasos a seguir son seleccionar dicho combo, así como dar a NEW y ver que queda vacio:<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewclear87to470.gif'></center>
-Después debemos de cargar el dat que hemos generado con la utilidad HTML, desde el menú.<br>
+Una vez más, debemos de volver a comprobar que tenemos el combo de 1-590 Mhz seleccionado. Después debemos de cargar el dat que hemos generado con la utilidad HTML, desde el menú.<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewOpen.gif'></center>
 Luego podemos generar el archivo desde el html5, pulsando el botón LPD(01-16) para generar los 16 primeros canales de LPD:<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewhtml5lpd.gif'></center>
