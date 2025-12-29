@@ -147,16 +147,17 @@
 	  </tr>
       <tr>
 	   <td>
-        <button type='button' id="btnPMR" onclick="ExecPMR()">PMR 446</button>
+        <button type='button' id="btnPMR" onclick="ExecPMR()">PMR 446</button>		
 	   </td>
 	  </tr>
 	  <tr>
-	   <td>
+	   <td>	    
 	    <button type='button' id="btnLPD0116" onclick="cmbLPDClick('opcion1')">LPD(01-16)</button>
 		<button type='button' id="btnLPD1732" onclick="cmbLPDClick('opcion2')">LPD(17-32)</button>
 		<button type='button' id="btnLPD3348" onclick="cmbLPDClick('opcion3')">LPD(33-48)</button>
 		<button type='button' id="btnLPD4964" onclick="cmbLPDClick('opcion4')">LPD(49-64)</button>
 		<button type='button' id="btnLPD5469" onclick="cmbLPDClick('opcion5')">LPD(54-69)</button>
+		WARN TX(10 mw)!!!
 	    <!--<select id="cmbLPD" onchange="cmbLPDClick(value)">-->
 	    <!-- <option selected value="opcion1" onclick="cmbLPDClick(value)">LPD(01-16)</option>-->
 	    <!-- <option value="opcion2" onclick="cmbLPDClick(value)">LPD(17-32)</option>-->
@@ -179,8 +180,37 @@
        </td>
 	  </tr>
 	  <tr>
-	   <td>
-        <button type='button' id="btnFM" onclick="ExecFM()">FM(comercial)</button>
+	   <td>	    
+        <button type='button' id="btnFM" onclick="ExecFM()">FM(commercial)</button>
+		WARN TX!!!
+	   </td>
+	  </tr>
+	  <tr>
+	   <td>	    
+	    <button type='button' id="btnPRS0116" onclick="cmbPRSClick('opcion1')">PRS 409(01-16)</button>
+		<button type='button' id="btnPRS1720" onclick="cmbPRSClick('opcion2')">PRS 409(05-20)</button>
+		WARN TX!!!
+	   </td>
+	  </tr>
+	  <tr>
+	   <td>	    
+	    <button type='button' id="btnFRS220116" onclick="cmbFRS22Click('opcion1')">FRS22 (01-16)</button>
+		<button type='button' id="btnPRS221722" onclick="cmbFRS22Click('opcion2')">FRS22 (07-22)</button>
+		WARN TX!!!
+	   </td>
+	  </tr>
+	  <tr>
+	   <td>	    
+	    <button type='button' id="btnFreenet" onclick="ExecFreenet()">Freenet 149</button>
+		WARN TX!!!
+	   </td>
+	  </tr>
+	  <tr>
+	   <td>	    
+	    <button type='button' id="btnHunterAsturias" onclick="ExecHunter('Asturias')">Asturias</button>
+		<button type='button' id="btnHunterCantabria" onclick="ExecHunter('Cantabria')">Cantabria</button>
+		<button type='button' id="btnHunterCastillaLeon" onclick="ExecHunter('CastillaLeon')">Castilla Leon</button>
+		HUNTER. WARN TX!!!
 	   </td>
 	  </tr>
 	  <tr><th></th><td></td></tr> 
@@ -236,7 +266,11 @@
    var cadByte= ["","","",""];
    var cadTxPower="";
    var cadwn="";
-   var freqPMR=["44600625","44601875","44603125","44604375","44605625","44606875","44608125","44609375","44610625","44611875","44613125","44614375","44615625","44616875","44618125","44619375"];
+   var freqPMR=["44600625","44601875","44603125","44604375","44605625","44606875","44608125","44609375","44610625","44611875","44613125","44614375","44615625","44616875","44618125","44619375"];   
+   var freqPRS0116=["40975000","40976250","40977500","40978750","40980000","40981250","40982500","40983750","40985000","40986250","40987500","40988750","40990000","40991250","40992500","40993750"];
+   var freqPRS0520=["40980000","40981250","40982500","40983750","40985000","40986250","40987500","40988750","40990000","40991250","40992500","40993750","40995000","40996250","40997500","40998750"];
+   var freqFRS220116=["46256250","46258750","46261250","46263750","46266250","46268750","46271250","46756250","46758750","46761250","46763750","46766250","46768750","46771250","46255000","46257500"];
+   var freqFRS220722=["46271250","46756250","46758750","46761250","46763750","46766250","46768750","46771250","46255000","46257500","46260000","46262500","46265000","46267500","46270000","46272500"];
    var freqLPD0116=["43307500","43310000","43312500","43315000","43317500","43320000","43322500","43325000","43327500","43330000","43332500","43335000","43337500","43340000","43342500","43345000"];
    var freqLPD1732=["43347500","43350000","43352500","43355000","43357500","43360000","43362500","43365000","43367500","43370000","43372500","43375000","43377500","43380000","43382500","43385000"];
    var freqLPD3348=["43387500","43390000","43392500","43395000","43397500","43400000","43402500","43405000","43407500","43410000","43412500","43415000","43417500","43420000","43422500","43425000"];
@@ -246,7 +280,12 @@
    var freqCB1732=["2716500","2717500","2718500","2720500","2721500","2722500","2725500","2723500","2724500","2726500","2727500","2728500","2729500","2730500","2731500","2732500"];
    var freqCB2540=["2724500","2726500","2727500","2728500","2729500","2730500","2731500","2732500","2733500","2734500","2735500","2736500","2737500","2738500","2739500","2740500"];
    var freqFM=["9590000","9700000","9710000","9715000","9720000","9725000","9730000","9740000","9795000","9810000","9840000","10180000","10300000","10310000","10315000","10320000"];
-   
+   var freqFreenet=["14902500","14903750","14905000","14908750","14910000","14911250","14902500","14903750","14905000","14908750","14910000","14911250","14902500","14903750","14905000","14908750"]; 
+   var freqHuntAsturias=["15021250","15065000","15068750","15077500","15091250","15092500","15093750","15116250","15118750","15127500","15128750","15141250","15142500","15146250","15157500","15158750"];
+   var freqHuntCantabria=["15021250","15065000","15118250","15118750","15141250","15157500","15158750","15160000","15190000","15191250","15021250","15065000","15118250","15118750","15141250","15157500"];
+   var freqHuntCastillaLeon=["15118750","15141250","15157500","15158750","15190000","15118750","15141250","15157500","15158750","15190000","15118750","15141250","15157500","15158750","15190000","15118750"];
+					
+					
    function ExecStart()
    {
     try 
@@ -374,6 +413,72 @@
     }	
    }
    
+   //Generic PRS 409 China continental, Hong Kong y Macao 409.750-409.9875 Mhz
+   function ExecPRS(opcion)
+   {
+    var auxFreqPRS;
+   
+    try
+	{
+     ExecClear();
+	 
+	 switch (opcion)
+	 {
+	  case "opcion1": auxFreqPRS= freqPRS0116; break;
+	  case "opcion2": auxFreqPRS= freqPRS0520; break;
+	  default: auxFreqPRS= freqPRS0116; break;
+	 }		
+	
+     for (var i=0;i<16;i++)
+	 {
+      cadNameObj= "textrx"+(i+1).toString();	
+	  document.getElementById(cadNameObj).value = auxFreqPRS[i]; //set rx freq
+	 
+      cadNameObj= "texttx"+(i+1).toString();	
+	  document.getElementById(cadNameObj).value = auxFreqPRS[i]; //set tx freq	 
+	 }
+	
+	 ExecStart();   
+	}
+    catch (error)
+    {
+     console.error(error);
+    }
+   }
+   
+   
+   //Generic Family Radio Service 462-467 MHz
+   function ExecFRS22(opcion)
+   {
+    var auxFreqFRS22;
+   
+    try
+	{
+     ExecClear();
+	 
+	 switch (opcion)
+	 {
+	  case "opcion1": auxFreqFRS22= freqFRS220116; break;
+	  case "opcion2": auxFreqFRS22= freqFRS220722; break;
+	  default: auxFreqFRS22= freqFRS220116; break;
+	 }		
+	
+     for (var i=0;i<16;i++)
+	 {
+      cadNameObj= "textrx"+(i+1).toString();	
+	  document.getElementById(cadNameObj).value = auxFreqFRS22[i]; //set rx freq
+	 
+      cadNameObj= "texttx"+(i+1).toString();	
+	  document.getElementById(cadNameObj).value = auxFreqFRS22[i]; //set tx freq	 
+	 }
+	
+	 ExecStart();   
+	}
+    catch (error)
+    {
+     console.error(error);
+    }   
+   }
 
    
    //Generic LPD channel 01-16
@@ -473,7 +578,73 @@
     {
      console.error(error);
     }	
-   }      
+   }    
+
+
+   //Set freq Freenet 149 Mhz
+   function ExecFreenet()
+   {    
+    try
+	{
+     ExecClear();
+	
+     for (var i=0;i<16;i++)
+	 {
+      cadNameObj= "textrx"+(i+1).toString();
+	  document.getElementById(cadNameObj).value = freqFreenet[i]; //set rx freq
+	 
+      cadNameObj= "texttx"+(i+1).toString();
+	  document.getElementById(cadNameObj).value = freqFreenet[i]; //set tx freq
+	  
+	  if ((i>=6) && (i<12))
+	  {
+	   cadNameObj= "cmbtx"+(i+1).toString(); //HIGH
+	   document.getElementById(cadNameObj).value = "opcion2";
+	  }
+	 }	 	     
+	
+	 ExecStart();
+	}
+    catch (error)
+    {
+     console.error(error);
+    }	
+   }
+   
+   
+   //Hunter 
+   function ExecHunter(comunidad)
+   {
+    var auxFreqHunt;
+	
+    try
+    {
+     ExecClear();
+	
+	 switch (comunidad)
+	 {
+	  case "Asturias": auxFreqHunt= freqHuntAsturias; break;
+	  case "Cantabria": auxFreqHunt= freqHuntCantabria; break;
+	  case "CastillaLeon": auxFreqHunt= freqHuntCastillaLeon; break;
+	  default: auxFreqHunt= freqHuntAsturias; break;
+	 }		
+	
+     for (var i=0;i<16;i++)
+	 {
+      cadNameObj= "textrx"+(i+1).toString();
+	  document.getElementById(cadNameObj).value = auxFreqHunt[i]; //set rx freq
+	 
+      cadNameObj= "texttx"+(i+1).toString();
+	  document.getElementById(cadNameObj).value = auxFreqHunt[i]; //set tx freq
+	 }
+	
+	 ExecStart();
+	}
+    catch (error)
+    {
+     console.error(error);
+    }	   
+   }
    
    
    //Save file data
@@ -699,6 +870,31 @@
     }   
    }
 
+   //Combobox PRS select
+   function cmbPRSClick(opcion)
+   {
+    try
+    {     
+	 ExecPRS(opcion);
+    }
+	catch (error)
+    {
+     console.error(error);
+    }
+   }
+   
+   //Combobox FRS22 select
+   function cmbFRS22Click(opcion)
+   {
+    try
+    {     
+	 ExecFRS22(opcion);
+    }
+	catch (error)
+    {
+     console.error(error);
+    }
+   }
    
    
    
