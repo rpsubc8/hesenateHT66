@@ -72,7 +72,11 @@ El W/N se refiere a la expansión de la banda, que para PMR tiene que ser Narrow
 <br>
 <h1>Manual</h1>
 He dejado un manual en español convertido a OCR y PDF:<br><br>
-<a href='https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf'>https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf</a>
+<a href='https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf'>https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf</a><br>
+<br>
+También existe un manual multiidioma distribuido por la compañia PTTalky, tanto para el modelo HT66, como el Plus:<br>
+<br>
+<a href='https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66HT66PLUSManual.pdf'>https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66HT66PLUSManual.pdf</a>
 
 
 <br><br>
@@ -105,22 +109,30 @@ He creado una utilidad en HTML5 para poder modificar todos los parámetros bloqu
 Se dispone de un botón para generar el .DAT para las frecuencias por defecto para PMR 446, así como LPD. Dado que se tiene 16 canales y el LPD son 69, he dejado varios grupos.<br>
 Las opciones son:<br><br>
 
-| Botón         | Acción                         |
-| ------------- | ------------------------------ |
-| PMR 446       | Genera los 16 canales de PMR   |
-| LPD(01-16)    | Genera canal 1 al 16 de LPD    |
-| LPD(17-32)    | Genera canal 17 al 32 de LPD   |
-| LPD(33-48)    | Genera canal 33 al 48 de LPD   |
-| LPD(54-69)    | Genera canal 54 al 69 de LPD   |
-| CB(01-16)     | Genera canal 1 al 16 de CB     |
-| CB(17-32)     | Genera canal 17 al 32 de CB    |
-| CB(25-40)     | Genera canal 25 al 40 de CB    |
-| FM(comercial) | Un par de cadenas FM           |
-| Clear         | Borra todo                     |
-| Save          | Guarda el fichero fisicamente  |
-| Examinar      | Selecciona fichero (no lo lee) |
-| Load          | Lee el fichero seleccionado    |
-| Start         | Genera el fichero              |
+| Botón          | Acción                         |
+| -------------- | ------------------------------ |
+| PMR 446        | Genera los 16 canales de PMR   |
+| LPD(01-16)     | Genera canal 1 al 16 de LPD    |
+| LPD(17-32)     | Genera canal 17 al 32 de LPD   |
+| LPD(33-48)     | Genera canal 33 al 48 de LPD   |
+| LPD(54-69)     | Genera canal 54 al 69 de LPD   |
+| CB(01-16)      | Genera canal 1 al 16 de CB     |
+| CB(17-32)      | Genera canal 17 al 32 de CB    |
+| CB(25-40)      | Genera canal 25 al 40 de CB    |
+| FM(comercial)  | Un par de cadenas FM           |
+| PRS 409(01-16) | Canal 1 al 16 PRS 409 Mhz      |
+| PRS 409(05-20) | Canal 1 al 16 PRS 409 Mhz      |
+| FRS22(01-16)   | Canal 1 al 16 FRS22 462 Mhz    |
+| FRS22(07-22)   | Canal 7 al 22 FRS22 462 Mhz    |
+| Freenet 159    | Canal 1 al 6 Freenet 159 Mhz   |
+| Asturias       | Caza Asturias 150 Mhz          |
+| Cantabria      | Caza Cantabria 150 Mhz         |
+| Castilla Leon  | Caza Castilla Leon 151 Mhz     |
+| Clear         | Borra todo                      |
+| Save          | Guarda el fichero fisicamente   |
+| Examinar      | Selecciona fichero (no lo lee)  |
+| Load          | Lee el fichero seleccionado     |
+| Start         | Genera el fichero               |
 
 
 <br>
@@ -150,3 +162,19 @@ Con la utilidad en html5 se puede probar todo el rango de frecuencias que queram
 
 Debemos prestar atención que el archivo .DAT debe tener exactamente 974 bytes.
 <br><br>
+
+
+
+<h1>Otros Talkys</h1>
+Existen varios talkys distribuidos por la compañía PTTalky, que comparten características con el HT66:
+<pre>
+ HT66 Plus
+ FR1 y FR1 Plus
+ FR2 y FR2 Plus
+ PR2 y PR2 Plus
+</pre>
+Al ser similares, podiamos aplicar soluciones similares, pero existen ciertos problemas.<br>
+De lo que he podido comprobar, dado que sólo tengo el HT66, es que el software del FR1 es el único que consigue comunicarse con el PMR HT66 y lee los datos correctamente. Lamentablemente, a la hora de guardar el archivo, así como enviar a la radio, se basa en el índice del combobox de las frecuncias, que en este caso es la normativa FRS22, es decir, 469 Mhz, por tanto, nunca deja guardar la frecuencia bien. Este software era interesante, porque tiene desbloqueado el combo de Power TX, dado que la normativa FRS, permite un par de canales en modo HIGH.
+<br>
+El PR2 está pensado para PMR 446, y por lo que he podido comprobar, el sistema de archivos si deja cambiar frecuencias, así que es posible que funcione algo similar.<br>
+El resto, tienen parámetros extras en diferentes posiciones del archivo, que supongo que habría que adaptar.
