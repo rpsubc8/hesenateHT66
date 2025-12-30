@@ -5,7 +5,11 @@ In accordance with the telecommunications regulations of each country, the PMR44
 The responsibility for making this modification therefore lies with the user.<br>
 The LPD 433 standard only allows a maximum power of 10 mW, so the 500 or 700 mW of power is a problem.<br>
 On commercial FM (87.5 MHz to 108.0 MHz), everything is prohibited.<br>
-On CB 27 MHz, 4W is permitted for FM mode.<br>
+On CB 27 MHz, 4W is permitted for FM mode. Only the 40 channels of band D (26.965 MHz - 27.405 MHz) are registered. Bands A, B, C and E, depending on the country, will have regulations. In Spain, although it is not registered, it is considered free due to its age. Band F, from channel 12 (28.005 MHz) to 40 (28.305 MHz), requires amateur radio authorisation.<br>
+PRS (409.750 MHz - 409.9875 MHz) is authorised for mainland China, Hong Kong and Macao.<br>
+FRS 22 channels (462 MHz - 467 MHz), authorised for use in the United States and Mexico.<br>
+Freenet 6 channels (149.0250 MHz - 149.1125 MHz), authorised for Germany.<br>
+Hunter frequencies require authorisation.<br>
 The remaining frequencies have their own regulations, both in amateur radio bands and for private use, which must be consulted individually.<br>
 Ignorance of the law does not exempt one from compliance.
 <br><br>
