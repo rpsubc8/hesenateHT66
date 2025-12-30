@@ -5,9 +5,13 @@ De acuerdo a las normativas de Telecomunicaciones de cada pais, la normativa PMR
 Queda por tanto en manos del usuario la responsabilidad de dicha modificación.<br>
 La normativa LPD 433 sólo permite 10 mw de potencia máxima, por lo que los 500 o 700 mw de potencia son un problema.<br>
 En FM comercial (87.5 MHz a 108.0 MHz) está prohibido todo.<br>
-En CB 27 mhz, se permite 4W para modo FM.<br>
+En CB 27 mhz, se permite 4W para modo FM. Sólo está registrado los 40 canales de la banda D (26.965 Mhz - 27.405 Mhz). La banda A,B,C y E, dependiendo del Pais, tendrá unas normativas. En España, aunque no está registrado, por antigüedad se considera como si fuera libre. La banda F, del canal 12 (28.005 Mhz) al 40 (28.305 Mhz) requiere autorización de radioaficionado.<br>
+PRS (409.750 Mhz - 409.9875 Mhz.), está autorizado para China continental, Hong Kong y Macao.<br>
+FRS 22 canales (462 Mhz - 467 Mhz), está autorizado para Estados Unidos y México.<br>
+Freenet 6 canales (149.0250 MHz - 149.1125 MHz), está autorizado para Alemania.<br>
+El desconocimiento de la ley no exime de su cumplimiento.<br>
+Las frecuencias de cazador requieren autorización.<br>
 El resto de frecuencias tienen sus normativas, tanto en bandas de radioaficionado como de uso privado, que deben consultarse de manera individual.<br>
-El desconocimiento de la ley no exime de su cumplimiento.
 <br><br>
 
 <h1>Preparación</h1>
