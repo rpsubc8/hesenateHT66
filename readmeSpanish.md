@@ -173,6 +173,9 @@ Existen varios talkys distribuidos por la compañía PTTalky, que comparten cara
  FR2 y FR2 Plus
  PR2 y PR2 Plus
 </pre>
+El software cps se encuentra disponible:<br><br>
+<a href='https://pttalky.com/pages/software'>https://pttalky.com/pages/software</a><br>
+<br>
 Al ser similares, podiamos aplicar soluciones similares, pero existen ciertos problemas.<br>
 De lo que he podido comprobar, dado que sólo tengo el HT66, es que el software del FR1 es el único que consigue comunicarse con el PMR HT66 y lee los datos correctamente. Lamentablemente, a la hora de guardar el archivo, así como enviar a la radio, se basa en el índice del combobox de las frecuncias, que en este caso es la normativa FRS22, es decir, 469 Mhz, por tanto, nunca deja guardar la frecuencia bien. Este software era interesante, porque tiene desbloqueado el combo de Power TX, dado que la normativa FRS, permite un par de canales en modo HIGH.
 <br>
