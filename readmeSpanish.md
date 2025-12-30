@@ -9,9 +9,9 @@ En CB 27 mhz, se permite 4W para modo FM. Sólo está registrado los 40 canales 
 PRS (409.750 Mhz - 409.9875 Mhz.), está autorizado para China continental, Hong Kong y Macao.<br>
 FRS 22 canales (462 Mhz - 467 Mhz), está autorizado para Estados Unidos y México.<br>
 Freenet 6 canales (149.0250 MHz - 149.1125 MHz), está autorizado para Alemania.<br>
-El desconocimiento de la ley no exime de su cumplimiento.<br>
 Las frecuencias de cazador requieren autorización.<br>
 El resto de frecuencias tienen sus normativas, tanto en bandas de radioaficionado como de uso privado, que deben consultarse de manera individual.<br>
+El desconocimiento de la ley no exime de su cumplimiento.<br>
 <br><br>
 
 <h1>Preparación</h1>
