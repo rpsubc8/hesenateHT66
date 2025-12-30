@@ -652,6 +652,8 @@
    {
     try
     {	
+	 ExecStart(); //force reload
+	
      const content = cadOut;
      const blob = new Blob([content], { type: 'text/plain' });
      const url = URL.createObjectURL(blob);
