@@ -72,7 +72,12 @@ W/N refers to bandwidth expansion, which for PMR must be Narrow. Wide mode would
 <br>
 <h1>Help manual</h1>
 I have left a manual in Spanish converted to OCR and PDF:<br><br>
-<a href='https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf'>https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf</a>
+<a href='https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf'>https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66SpanishOCR.pdf</a><br>
+<br>
+There is also a multilingual manual distributed by PTTalky for both the HT66 and Plus models:<br>
+<br>
+<a href='https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66HT66PLUSManual.pdf'>https://github.com/rpsubc8/hesenateHT66/tree/main/Manual/HT66HT66PLUSManual.pdf</a>
+
 <br><br>
 
 
@@ -112,10 +117,18 @@ The options are:<br><br>
 | LPD(17-32)     | Generates channels 17 to 32 of LPD |
 | LPD(33-48)     | Generates channels 33 to 48 of LPD |
 | LPD(54-69)     | Generates channels 54 to 69 of LPD |
-| FM(commercial) | A pair of FM chains                |
 | CB(01-16)      | Generates channels 1 to 16 of CB   |
 | CB(17-32)      | Generates channels 17 to 32 of CB  |
 | CB(25-40)      | Generates channels 25 to 40 of CB  |
+| FM(commercial) | A pair of FM chains                |
+| PRS 409(01-16) | Channels 1 to 16 PRS 409 Mhz       |
+| PRS 409(05-20) | Channels 1 to 16 PRS 409 Mhz       |
+| FRS22(01-16)   | Channels 1 to 16 FRS22 462 Mhz     |
+| FRS22(07-22)   | Channels 7 to 22 FRS22 462 Mhz     |
+| Freenet 159    | Channels 1 to 6 Freenet 159 Mhz    |
+| Asturias       | Hunter Asturias 150 Mhz            |
+| Cantabria      | Hunter Cantabria 150 Mhz           |
+| Castilla Leon  | Hunter Castilla Leon 151 Mhz       |
 | Clear          | Delete everything                  |
 | Save           | Save the file physically           |
 | Browse         | Select file (does not read it)     |
@@ -150,3 +163,22 @@ With the HTML5 utility, you can test the entire range of frequencies you want, s
 
 We must ensure that the .DAT file is exactly 974 bytes in size.
 <br><br>
+
+
+
+<h1>Other Talkys</h1>
+There are several talkies distributed by the company PTTalky that share features with the HT66:
+<pre>
+ HT66 Plus
+ FR1 and FR1 Plus
+ FR2 and FR2 Plus
+ PR2 and PR2 Plus
+</pre>
+The CPS software is available:<br><br>
+<a href='https://pttalky.com/pages/software'>https://pttalky.com/pages/software</a><br>
+<br>
+As they are similar, we could apply similar solutions, but there are certain problems.<br>
+From what I have been able to ascertain, given that I only have the HT66, the FR1 software is the only one that can communicate with the PMR HT66 and read the data correctly. Unfortunately, when saving the file and sending it to the radio, it relies on the frequency combobox index, which in this case is the FRS22 standard, i.e. 469 MHz, so it never lets you save the frequency correctly. This software was interesting because it has the Power TX combo unlocked, given that the FRS standard allows a couple of channels in HIGH mode.
+<br>
+The PR2 is designed for PMR 446, and from what I have been able to ascertain, the file system does allow you to change frequencies, so it is possible that something similar will work.<br>
+The rest have extra parameters in different positions in the file, which I suppose would need to be adapted.
