@@ -213,3 +213,17 @@ I have left the .dat files for the LOW, HIGH, NARROW, and WIDE settings:
  <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2/pr2lowWide.dat'>pr2lowWide.dat</li>
  <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2/pr2highWide.dat'>pr2highWide.dat</li>
 </ul>
+<br><br>
+
+
+<h1>PTTalky PR2 Plus</h1>
+The programme reads it, but I don't have the actual radio to test it.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewpr2plushigh.jpg'></center>
+I have left the .dat files for the LOW, HIGH, NARROW, and WIDE settings:
+<ul>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2Plus/pr2plusLowNarrow.dat'>pr2plusLowNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2Plus/pr2plusHighNarrow.dat'>pr2plusHighNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2Plus/pr2plusLowWide.dat'>pr2plusLowWide.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2Plus/pr2plusHighWide.dat'>pr2plusHighWide.dat</li>
+</ul>
+
