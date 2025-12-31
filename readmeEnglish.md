@@ -186,3 +186,30 @@ From what I have been able to ascertain, given that I only have the HT66, the FR
 <br>
 The PR2 is designed for PMR 446, and from what I have been able to ascertain, the file system does allow you to change frequencies, so it is possible that something similar will work.<br>
 The rest have extra parameters in different positions in the file, which I suppose would need to be adapted.
+<br><br>
+<br>
+
+<h1>HT66 Plus</h1>
+The programme reads it, but I don't have the actual radio to test it.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewht66high.jpg'></center>
+I have left the .dat files for the LOW, HIGH, NARROW, and WIDE settings:
+<ul>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowNarrow.dat'>ht66plusLowNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighNarrow.dat'>ht66plusHighNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowWide.dat'>ht66plusLowWide.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighWide.dat'>ht66plusHighWide.dat</li>
+</ul>
+<br><br>
+<br>
+
+
+<h1>PTTalky PR2</h1>
+The programme reads it, but I don't have the actual radio to test it.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewpr2high.jpg'></center>
+I have left the .dat files for the LOW, HIGH, NARROW, and WIDE settings:
+<ul>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2/pr2lowNarrow.dat'>pr2lowNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2/pr2highNarrow.dat'>pr2highNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2/pr2lowWide.dat'>pr2lowWide.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2/pr2highWide.dat'>pr2highWide.dat</li>
+</ul>
