@@ -194,8 +194,20 @@ El programa lo lee, pero no tengo la radio real para probar.<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewht66high.jpg'></center>
 He dejado los .dat de las configuraciones LOW, HIGH, NARROW y WIDE:
 <ul>
- <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowNarrow.dat'>http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowNarrow.dat</li>
- <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighNarrow.dat'>http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighNarrow.dat</li>
- <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowWide.dat'>http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowWide.dat</li>
- <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighWide.dat'>http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighWide.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowNarrow.dat'>ht66plusLowNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighNarrow.dat'>ht66plusHighNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowWide.dat'>ht66plusLowWide.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighWide.dat'>ht66plusHighWide.dat</li>
+</ul>
+<br><br>
+
+<h1>PTTalky PR2</h1>
+El programa lo lee, pero no tengo la radio real para probar.<br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewpr2high.jpg'></center>
+He dejado los .dat de las configuraciones LOW, HIGH, NARROW y WIDE:
+<ul>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2/pr2lowNarrow.dat'>pr2lowNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2/pr2highNarrow.dat'>pr2highNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2/pr2lowWide.dat'>pr2lowWide.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2/pr2highWide.dat'>pr2highWide.dat</li>
 </ul>
