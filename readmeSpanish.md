@@ -181,13 +181,21 @@ El software cps se encuentra disponible:<br><br>
 <a href='https://pttalky.com/pages/software'>https://pttalky.com/pages/software</a><br>
 <br>
 Al ser similares, podiamos aplicar soluciones similares, pero existen ciertos problemas.<br>
-De lo que he podido comprobar, dado que sólo tengo el HT66, es que el software del FR1 es el único que consigue comunicarse con el PMR HT66 y lee los datos correctamente. Lamentablemente, a la hora de guardar el archivo, así como enviar a la radio, se basa en el índice del combobox de las frecuncias, que en este caso es la normativa FRS22, es decir, 469 Mhz, por tanto, nunca deja guardar la frecuencia bien. Este software era interesante, porque tiene desbloqueado el combo de Power TX, dado que la normativa FRS, permite un par de canales en modo HIGH.
+De lo que he podido comprobar, dado que sólo tengo el HT66, es que el software del FR1 es el único que consigue comunicarse con el PMR HT66 y lee los datos correctamente. Lamentablemente, a la hora de guardar el archivo, así como enviar a la radio, se basa en el índice del combobox de las frecuencias, que en este caso es la normativa FRS22, es decir, 469 Mhz, por tanto, nunca deja guardar la frecuencia bien. Este software era interesante, porque tiene desbloqueado el combo de Power TX, dado que la normativa FRS, permite un par de canales en modo HIGH.
 <br>
 El PR2 está pensado para PMR 446, y por lo que he podido comprobar, el sistema de archivos si deja cambiar frecuencias, así que es posible que funcione algo similar.<br>
 El resto, tienen parámetros extras en diferentes posiciones del archivo, que supongo que habría que adaptar.<br>
+<br><br>
 <br>
-Para el HT66 Plus he dejado los .dat de las configuraciones LOW, HIGH, NARROW y WIDE:<br><br>
-<a href='https://github.com/rpsubc8/hesenateHT66/tree/main/others/ht66plus'>https://github.com/rpsubc8/hesenateHT66/tree/main/others/ht66plus</a><br>
-<br>
-El programa lo lee, pero no tengo la radio real para probar.
+
+
+<h1>HT66 Plus</h1>
+El programa lo lee, pero no tengo la radio real para probar.<br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewht66high.jpg'></center>
+He dejado los .dat de las configuraciones LOW, HIGH, NARROW y WIDE:
+<ul>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowNarrow.dat'>http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighNarrow.dat'>http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighNarrow.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowWide.dat'>http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusLowWide.dat</li>
+ <li><a href='http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighWide.dat'>http://rpsubc8.github.io/hesenateHT66/others/ht66plus/ht66plusHighWide.dat</li>
+</ul>
