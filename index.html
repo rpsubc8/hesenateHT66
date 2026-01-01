@@ -214,21 +214,36 @@
 	   </td>
 	  </tr>
 	  <tr>
-	   <td>	    
+	   <td>
+	    <button type='button' id="btnHunterAragon" onclick="ExecHunter('Aragon')">Aragon</button>
 	    <button type='button' id="btnHunterAsturias" onclick="ExecHunter('Asturias')">Asturias</button>
-		<button type='button' id="btnHunterCantabria" onclick="ExecHunter('Cantabria')">Cantabria</button>
+		<button type='button' id="btnHunterCantabria" onclick="ExecHunter('Cantabria')">Cantabria</button>		
 		<button type='button' id="btnHunterCastillaLeon" onclick="ExecHunter('CastillaLeon')">Castilla Leon</button>
+		<button type='button' id="btnHunterCatalan" onclick="ExecHunter('Catalan')">Catalu&ntilde;a</button>
 		HUNTER.
 		<label name="lblWarnHunter" id="lblWarnHunter" style="color:red">WARN TX!!!</label>
 	   </td>
 	  </tr>
 	  <tr>
 	   <td>  
-	    <button type='button' id="btnMarine0116" onclick="ExecMarine('opcion1')">01-16</button>
-		MARINE
-		<label name="lblWarnMarine" id="lblWarnMarine" style="color:red">WARN TX!!!</label>
+	    <button type='button' id="btnMarine0116" onclick="ExecMarine('opcion1','SPAIN')">01-16</button>
+		<button type='button' id="btnMarine1762" onclick="ExecMarine('opcion2','SPAIN')">17-63</button>
+		<button type='button' id="btnMarine6481" onclick="ExecMarine('opcion3','SPAIN')">64-81</button>
+		<button type='button' id="btnMarine7188" onclick="ExecMarine('opcion4','SPAIN')">71-88</button>
+		MARINE SPAIN.
+		<label name="lblWarnMarineSpain" id="lblWarnMarineSpain" style="color:red">WARN TX!!!</label>
 	   </td>
-	  </tr>	  	  
+	  </tr>
+	  <tr>
+	   <td>  
+	    <button type='button' id="btnMarine0116" onclick="ExecMarine('opcion1','USA')">01-16</button>
+		<button type='button' id="btnMarine1762" onclick="ExecMarine('opcion2','USA')">17-63</button>
+		<button type='button' id="btnMarine6481" onclick="ExecMarine('opcion3','USA')">64-81</button>
+		<button type='button' id="btnMarine7188" onclick="ExecMarine('opcion4','USA')">71-88</button>
+		MARINE USA.
+		<label name="lblWarnMarineUSA" id="lblWarnMarineUSA" style="color:red">WARN TX!!!</label>
+	   </td>
+	  </tr>		  
 	  <tr><th></th><td></td></tr> 
 	  <tr><th></th><td></td></tr> 
 	  <tr>
@@ -319,13 +334,32 @@
      
    var freqFM=["9590000","9700000","9710000","9715000","9720000","9725000","9730000","9740000","9795000","9810000","9840000","10180000","10300000","10310000","10315000","10320000"];
    var freqFreenet=["14902500","14903750","14905000","14908750","14910000","14911250","14902500","14903750","14905000","14908750","14910000","14911250","14902500","14903750","14905000","14908750"]; 
+   
+   //Hunter freqs
+   var freqHuntAragon=["44701250","44701250","44701250","44701250","44701250","44705000","44705000","44705000","44705000","44705000","44718750","44718750","44718750","44718750","44718750","44722500"];
    var freqHuntAsturias=["15021250","15065000","15068750","15077500","15091250","15092500","15093750","15116250","15118750","15127500","15128750","15141250","15142500","15146250","15157500","15158750"];
-   var freqHuntCantabria=["15021250","15065000","15118250","15118750","15141250","15157500","15158750","15160000","15190000","15191250","15021250","15065000","15118250","15118750","15141250","15157500"];
+   var freqHuntCantabria=["15021250","15065000","15118250","15118750","15141250","15157500","15158750","15160000","15190000","15191250","15021250","15065000","15118250","15118750","15141250","15157500"];   
    var freqHuntCastillaLeon=["15118750","15141250","15157500","15158750","15190000","15118750","15141250","15157500","15158750","15190000","15118750","15141250","15157500","15158750","15190000","15118750"];
+   var freqHuntCatalan=["44701250","44701250","44701250","44701250","44701250","44705000","44705000","44705000","44705000","44705000","44711250","44711250","44711250","44711250","44711250","44715000"];
   
-   var freqMarineTX0116=["15605000","15610000","15615000","15620000","15625000","15630000","15635000","15640000","15645000","15650000","15655000","15660000","15665000","15670000","15675000","15680000"];
-   var freqMarineRX0116=["16065000","16070000","15675000","16080000","16085000","15630000","16095000","15640000","15645000","15650000","15655000","15660000","15665000","15670000","15675000","15680000"];
-					
+   //Marine freqs Spain
+   var freqMarineTX0116_spain=["15605000","15610000","15615000","15620000","15625000","15630000","15635000","15640000","15645000","15650000","15655000","15660000","15665000","15670000","15675000","15680000"];
+   var freqMarineRX0116_spain=["16065000","16070000","15675000","16080000","16085000","15630000","16095000","15640000","15645000","15650000","15655000","15660000","15665000","15670000","15675000","15680000"];
+   var freqMarineTX1763_spain=["15685000","15690000","15695000","15700000","15705000","15710000","15715000","15720000","15725000","15730000","15735000","15740000","15602500","15607500","15612500","15617500"];
+   var freqMarineRX1763_spain=["15685000","16150000","16155000","16160000","16165000","16170000","16175000","16180000","16185000","16190000","16195000","16200000","16062500","15667500","16072500","16077500"];
+   var freqMarineTX6481_spain=["15622500","15627500","15632500","15637500","15642500","15647500","15652500","15657500","15662500","15667500","15672500","15687500","15692500","15697500","15702500","15707500"];
+   var freqMarineRX6481_spain=["16082500","16087500","16092500","15637500","15642500","15647500","15652500","15657500","15662500","15667500","15672500","15687500","16152500","16157500","16162500","16167500"];
+   var freqMarineTX7188_spain=["15657500","15662500","15667500","15672500","15687500","15692500","15697500","15702500","15707500","15717500","15717500","15722500","15727500","15732500","15737500","15742500"];
+   var freqMarineRX7188_spain=["15657500","15662500","15667500","15672500","15687500","16152500","16157500","16162500","16167500","16172500","16177500","16122500","16187500","16192500","16197500","16202500"];
+   //Marine freqs USA
+   var freqMarineTX0116_usa=["15605000","15610000","15615000","15620000","15625000","15630000","15635000","15640000","15645000","15650000","15655000","15660000","15665000","15670000","15675000","15680000"];
+   var freqMarineRX0116_usa=["15605000","15610000","15615000","15620000","15625000","15630000","15635000","15640000","15645000","15650000","15655000","15660000","15665000","15670000","15675000","15680000"];
+   var freqMarineTX1763_usa=["15685000","15690000","15695000","15700000","15705000","15710000","15715000","15720000","15725000","15730000","15735000","15740000","15602500","15607500","15612500","15617500"];
+   var freqMarineRX1763_usa=["15685000","15690000","15695000","15700000","15705000","15710000","15715000","16180000","16185000","16190000","16195000","16200000","15602500","15607500","15612500","15617500"];
+   var freqMarineTX6481_usa=["15622500","15627500","15632500","15637500","15642500","15647500","15652500","15657500","15662500","15667500","15672500","15687500","15692500","15697500","15702500","15707500"];
+   var freqMarineRX6481_usa=["15622500","15627500","15632500","15637500","15642500","15647500","15652500","15657500","15662500","15667500","15672500","15687500","15692500","15697500","15702500","15707500"];
+   var freqMarineTX7188_usa=["15657500","15662500","15667500","15672500","15687500","15692500","15697500","15702500","15707500","15712500","15717500","15722500","15727500","15732500","15737500","15742500"];
+   var freqMarineRX7188_usa=["15742500","15737500","15732500","15727500","15722500","15717500","15712500","15707500","15702500","15697500","15692500","15687500","15672500","15667500","15662500","15657500"];
 					
    function ExecStart()
    {
@@ -523,7 +557,7 @@
    }
    
    //Generic Band Marine
-   function ExecMarine(opcion)
+   function ExecMarine(opcion, country)
    {
     var auxFreqMarineTX;
 	var auxFreqMarineRX;
@@ -535,12 +569,24 @@
 	 switch (opcion)
 	 {
 	  case "opcion1": 
-	   auxFreqMarineTX= freqMarineTX0116; 
-	   auxFreqMarineRX= freqMarineRX0116;
+	   auxFreqMarineTX= (country==="SPAIN")? freqMarineTX0116_spain : freqMarineTX0116_usa; 
+	   auxFreqMarineRX= (country==="SPAIN")? freqMarineRX0116_spain : freqMarineRX0116_usa;
 	   break;
+	  case "opcion2":
+	   auxFreqMarineTX= (country==="SPAIN")? freqMarineTX1763_spain : freqMarineTX1763_usa;
+	   auxFreqMarineRX= (country==="SPAIN")? freqMarineRX1763_spain : freqMarineRX1763_usa;
+	   break;
+	  case "opcion3":
+	   auxFreqMarineTX= (country==="SPAIN")? freqMarineTX6481_spain : freqMarineTX6481_usa;
+	   auxFreqMarineRX= (country==="SPAIN")? freqMarineRX6481_spain : freqMarineRX6481_usa;  
+	   break;	   
+	  case "opcion4":
+	   auxFreqMarineTX= (country==="SPAIN")? freqMarineTX7188_spain : freqMarineTX7188_usa;
+	   auxFreqMarineRX= (country==="SPAIN")? freqMarineRX7188_spain : freqMarineRX7188_usa; 
+	   break;	   	   
 	  default:
-	   auxFreqMarineTX= freqMarineTX0116; 
-	   auxFreqMarineRX= freqMarineRX0116;	  
+	   auxFreqMarineTX= (country==="SPAIN")? freqMarineTX0116_spain : freqMarineTX0116_usa;
+	   auxFreqMarineRX= (country==="SPAIN")? freqMarineRX0116_spain : freqMarineRX0116_usa;
 	   break;
 	 }		
 	
@@ -727,7 +773,7 @@
    }
    
    
-   //Hunter 
+   //Hunter
    function ExecHunter(comunidad)
    {
     var auxFreqHunt;
@@ -738,9 +784,11 @@
 	
 	 switch (comunidad)
 	 {
+	  case "Aragon": auxFreqHunt= freqHuntAragon; break;
 	  case "Asturias": auxFreqHunt= freqHuntAsturias; break;
-	  case "Cantabria": auxFreqHunt= freqHuntCantabria; break;
+	  case "Cantabria": auxFreqHunt= freqHuntCantabria; break;	  
 	  case "CastillaLeon": auxFreqHunt= freqHuntCastillaLeon; break;
+	  case "Catalan": auxFreqHunt= freqHuntCatalan; break;
 	  default: auxFreqHunt= freqHuntAsturias; break;
 	 }		
 	
