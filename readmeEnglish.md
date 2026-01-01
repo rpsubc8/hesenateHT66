@@ -10,6 +10,7 @@ PRS (409.750 MHz - 409.9875 MHz) is authorised for mainland China, Hong Kong and
 FRS 22 channels (462 MHz - 467 MHz), authorised for use in the United States and Mexico.<br>
 Freenet 6 channels (149.0250 MHz - 149.1125 MHz), authorised for Germany.<br>
 Hunter frequencies require authorisation.<br>
+Marine frequencies (156 MHz - 174 MHz) require authorisation, as well as boat ownership, and direct A(terrestrial) B(terrestrial) communication is prohibited. At least one of the two points (A or B) must be a marine vessel.<br>
 The remaining frequencies have their own regulations, both in amateur radio bands and for private use, which must be consulted individually.<br>
 Ignorance of the law does not exempt one from compliance.
 <br><br>
@@ -133,6 +134,14 @@ The options are:<br><br>
 | Asturias       | Hunter Asturias 150 Mhz            |
 | Cantabria      | Hunter Cantabria 150 Mhz           |
 | Castilla Leon  | Hunter Castilla Leon 151 Mhz       |
+| Marine(01-16)  | Marine channels 1 to 16 Spain      |
+| Marine(17-63)  | Marine channels 1 to 16 Spain      |
+| Marine(64-81)  | Marine channels 1 to 16 Spain      |
+| Marine(71-88)  | Marine channels 1 to 16 Spain      |
+| Marine(01-16)  | Marine channels 1 to 16 EEUU       |
+| Marine(17-63)  | Marine channels 1 to 16 EEUU       |
+| Marine(64-81)  | Marine channels 1 to 16 EEUU       |
+| Marine(71-88)  | Marine channels 1 to 16 EEUU       |
 | Clear          | Delete everything                  |
 | Save           | Save the file physically           |
 | Browse         | Select file (does not read it)     |
