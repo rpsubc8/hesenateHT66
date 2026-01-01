@@ -10,6 +10,7 @@ PRS (409.750 Mhz - 409.9875 Mhz.), está autorizado para China continental, Hong
 FRS 22 canales (462 Mhz - 467 Mhz), está autorizado para Estados Unidos y México.<br>
 Freenet 6 canales (149.0250 MHz - 149.1125 MHz), está autorizado para Alemania.<br>
 Las frecuencias de cazador requieren autorización.<br>
+Las frecuencias marinas (156 Mhz - 174 Mhz) requieren autorización, así como posesión de embarcación, quedando prohibida la comunicación A(terrestre) B(terreste) directa. Al menos uno de los 2 puntos (A o B), debe ser una embarcación marina.<br>
 El resto de frecuencias tienen sus normativas, tanto en bandas de radioaficionado como de uso privado, que deben consultarse de manera individual.<br>
 El desconocimiento de la ley no exime de su cumplimiento.<br>
 <br><br>
@@ -132,11 +133,19 @@ Las opciones son:<br><br>
 | Asturias       | Caza Asturias 150 Mhz          |
 | Cantabria      | Caza Cantabria 150 Mhz         |
 | Castilla Leon  | Caza Castilla Leon 151 Mhz     |
-| Clear         | Borra todo                      |
-| Save          | Guarda el fichero fisicamente   |
-| Examinar      | Selecciona fichero (no lo lee)  |
-| Load          | Lee el fichero seleccionado     |
-| Start         | Genera el fichero               |
+| Marine(01-16)  | Marina Canal 1 al 16 España    |
+| Marine(17-63)  | Marina Canal 1 al 16 España    |
+| Marine(64-81)  | Marina Canal 1 al 16 España    |
+| Marine(71-88)  | Marina Canal 1 al 16 España    |
+| Marine(01-16)  | Marina Canal 1 al 16 EEUU      |
+| Marine(17-63)  | Marina Canal 1 al 16 EEUU      |
+| Marine(64-81)  | Marina Canal 1 al 16 EEUU      |
+| Marine(71-88)  | Marina Canal 1 al 16 EEUU      |
+| Clear          | Borra todo                     |
+| Save           | Guarda el fichero fisicamente  |
+| Examinar       | Selecciona fichero (no lo lee) |
+| Load           | Lee el fichero seleccionado    |
+| Start          | Genera el fichero              |
 
 
 <br>
