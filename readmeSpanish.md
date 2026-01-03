@@ -232,3 +232,11 @@ He dejado los .dat de las configuraciones LOW, HIGH, NARROW y WIDE:
  <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2Plus/pr2plusLowWide.dat'>pr2plusLowWide.dat</li>
  <li><a href='http://rpsubc8.github.io/hesenateHT66/others/PTTalkyPR2Plus/pr2plusHighWide.dat'>pr2plusHighWide.dat</li>
 </ul>
+
+
+
+<br><br>
+<h1>Custom CPS</h1>
+He creado un CPS simplificado para poder hacer el dump, así como poder enviar los custom.dat a la radio por puerto serie usb, sin necesidad de usar el oficial de HESENATE.<br>
+No tiene chequeos, y por ahora es de andar por casa, pero permite enviar correctamente las frecuencias y hacer un dumpeado del contenido actual de la radio.<br><br>
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewcpswinht66.gif'></center>
