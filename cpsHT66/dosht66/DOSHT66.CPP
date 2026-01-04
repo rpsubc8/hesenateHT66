@@ -1,5 +1,6 @@
 //DOSHT66 by ackerman
-//Borland TC 3.0
+//MSDOS Borland TC 3.0
+//DOSBOX
 
 #include <conio.h>
 #include <dos.h>
@@ -8,7 +9,10 @@
 #include <time.h>
 
 #define COM1 0x3F8    // Dirección de E/S del puerto COM1
-#define TIMEOUT 500   // Timeout en milisegundos (500 ms)
+#define TIMEOUT 50   // Timeout en milisegundos (500 ms)
+#define TIMETXDELAY 1000
+#define TIMETXDELAYCH 4000
+#define TIMEINIT 3000
 
 
 
@@ -52,10 +56,10 @@ void configurar_puerto_com1()
 }
 
 // Enviar un byte de datos por el puerto COM1
-void enviar_dato(char dato)
+void enviar_dato(unsigned char dato)
 {
-    while ((inportb(COM1 + 5) & 0x20) == 0);  // Esperar hasta que el puerto esté listo
-    outportb(COM1, dato);  // Enviar el dato
+ while ((inportb(COM1 + 5) & 0x20) == 0);  // Esperar hasta que el puerto esté listo
+ outportb(COM1, dato);  // Enviar el dato
 }
 
 
@@ -68,6 +72,7 @@ void sendData(const char* data,unsigned short int auxSize)
  for (i=0;i<auxSize;i++)
  {
   enviar_dato(data[i]);
+  //delay(1);
  }
 
   printf("TX:");
@@ -123,10 +128,10 @@ char recibir_dato_con_timeout()
 void receiveData(char expectedValue)
 {
  unsigned char aux;
- char buffer[256]; 
+ char buffer[256];
  unsigned short int i;
  char isTimeOut=0;
- unsigned short int bytesRead=0;
+ unsigned short int bytesRead=0; 
     
  if (gb_error==1)
  {
@@ -135,14 +140,16 @@ void receiveData(char expectedValue)
 
  for (i=0;i<sizeof(buffer);i++)
  {
-  aux= recibir_dato_con_timeout();
-  if (aux==-1) 
+  isTimeOut= recibir_dato_con_timeout();
+  if (isTimeOut==-1)
   {
-   printf("\nTimeOut\n");
-   return;
+   //printf("\nTimeOut\n");
+   //return;
+   break;
   }
   else
   {
+   aux= (unsigned char)isTimeOut;
    buffer[bytesRead]= aux;
    bytesRead++;
   }
@@ -203,23 +210,28 @@ void SendHandshake()
  sendData(trama0,sizeof(trama0));
  receiveData(0x06); //expected value 0x06
  gb_receiv_cont=0;
+ delay(TIMETXDELAY);
  
 
  sendData(trama1,sizeof(trama1));
  receiveData(0x06); //expected value 0600000000000000
  gb_receiv_cont=0;
+ delay(TIMETXDELAY);
 
  sendData(trama2,sizeof(trama2));
  receiveData(0x06); //expected value 0x06
  gb_receiv_cont=0;
+ delay(TIMETXDELAY);
 
  sendData(trama3,sizeof(trama3));
  receiveData(0xFF); //expected value FFFFFFFFFFFF
  gb_receiv_cont=0;
+ delay(TIMETXDELAY);
 
  sendData(trama4,sizeof(trama4));
  receiveData(0x06); //expected value 0x06
  gb_receiv_cont=0;
+ delay(TIMETXDELAY);
 
 }
 
@@ -232,20 +244,24 @@ void DumpMemRadio()
 // initSerialPort();  //Init serial
  
  SendHandshake();
-  
+
+
  gb_receiv_cont=0;
  for (unsigned char i=0;i<18;i++)
  {
   sendData(trama5,sizeof(trama5));
   receiveData(0x57); //expected value 5700000D318DA802318DA802FFFFFFFFFF
   trama5[2]+=0x0D; //Add channel
+  
+  delay(TIMETXDELAYCH);
  }
+
 
 /*
  closeSerialPort();  //Close serial
 
  ShowOut();
- 
+
 
  auxContBytes= (18+2); //Head [M31_Analog_Redio]
  auxContBytes+= (18*(17+2));
@@ -273,6 +289,8 @@ int main(int argc, char **argv)
  configurar_puerto_com1();
 
  printf("Esperando datos en COM1...\n");
+
+ delay(TIMEINIT);
 
  DumpMemRadio();
 
