@@ -12,6 +12,7 @@ char paramPort[256]="14"; //COM14
 char paramSendFile[256]="custom.dat";
 unsigned char gb_do_dump=0;
 unsigned char gb_do_send=0;
+unsigned char gb_do_help=0;
 char cHex[16]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 char dataSendFile[1024];
 unsigned short int gb_contDataSendFile=0;
@@ -32,13 +33,14 @@ char trama5[4]={0x52,0x00,0x00,0x0D};
 //GET CHANNEL END
 
 unsigned char gb_error=0;
+unsigned char gb_warn=0;
 char cadOut[1024];
 unsigned char gb_receiv[1024];
 unsigned short int gb_receiv_cont=0;
 
 void initSerialPort(void);
 void sendData(const char* data,unsigned short int auxSize);
-void receiveData(void);
+void receiveData(char expectedValue);
 void closeSerialPort(void);
 void ShowOut(void);
 void SendHandshake(void);
@@ -159,7 +161,7 @@ void sendData(const char* data,unsigned short int auxSize)
 }
 
 //****************************************************************
-void receiveData()
+void receiveData(char expectedValue)
 {
  unsigned char aux;
  char buffer[256];
@@ -195,6 +197,12 @@ void receiveData()
  {
   gb_error=1;
   printf("ERROR!!! receiving data\n");
+ }
+ 
+ if (buffer[0]!=expectedValue)
+ {
+  gb_warn=1;
+  printf("WARN!!! expected value %02X\n",expectedValue);
  }
 }
 
@@ -264,23 +272,23 @@ void SendHandshake()
  gb_receiv_cont=0;
  //sendData("T999RAM");
  sendData(trama0,sizeof(trama0));
- receiveData();
+ receiveData(0x06); //expected value 0x06
  gb_receiv_cont=0;
  
  sendData(trama1,sizeof(trama1));
- receiveData();
+ receiveData(0x06); //expected value 0600000000000000
  gb_receiv_cont=0;
  
  sendData(trama2,sizeof(trama2));
- receiveData();
+ receiveData(0x06); //expected value 0x06
  gb_receiv_cont=0;
   
  sendData(trama3,sizeof(trama3));
- receiveData();
+ receiveData(0xFF); //expected value FFFFFFFFFFFF
  gb_receiv_cont=0;
  
  sendData(trama4,sizeof(trama4));
- receiveData();
+ receiveData(0x06); //expected value 0x06
  gb_receiv_cont=0;
 }
 
@@ -297,7 +305,7 @@ void DumpMemRadio()
  for (unsigned char i=0;i<18;i++)
  {
   sendData(trama5,sizeof(trama5));
-  receiveData();
+  receiveData(0x57); //expected value 5700000D318DA802318DA802FFFFFFFFFF
   trama5[2]+=0x0D; //Add channel
  }
 
@@ -450,6 +458,7 @@ void ShowDataSendTX()
 void SendMemRadio()
 {
  gb_error=0;
+ gb_warn=0;
  
  LoadSendFile();
  if(gb_error==1){ return; }
@@ -468,7 +477,7 @@ void SendMemRadio()
  for (unsigned char i=0;i<18;i++)
  {
   sendData(dataSendTX[i],34);
-  receiveData();  
+  receiveData(0x06);  //expected value 06
  }
 
  closeSerialPort();  //Close serial     
@@ -496,12 +505,19 @@ void ClearBuffers()
  }
  
  gb_error=0;
+ gb_warn=0;
  gb_receiv_cont= 0;
 }
 
 //***************************************
 void DoAction(int argc, char **argv)
 {
+ if (gb_do_help==1)
+ {
+  ShowHelp();
+  return;
+ }
+ 
  if (gb_do_dump==1)
  {
   DumpMemRadio();
@@ -511,6 +527,16 @@ void DoAction(int argc, char **argv)
  {
   SendMemRadio();
  }
+ 
+ if(gb_warn==1)
+ {
+  printf("WARN!!! Warning ocurred\n");
+ }
+ 
+ if(gb_error==1)
+ {
+  printf("ERROR!!! ERROR ocurred\n");
+ } 
 }
 
 //***************************************
@@ -557,6 +583,13 @@ void GetParam(int argc, char **argv)
      sprintf(paramSendFile,"%s",cad);                               
      gb_do_send=1;
     }
+    else
+    {
+     if (strstr(argv[i],"-?")!=NULL)        
+     {
+      gb_do_help=1;
+     }
+    }
    }
   }
  }
@@ -576,8 +609,8 @@ void GetParam(int argc, char **argv)
 //***************************************
 void ShowHelp()
 {
- printf(" WINHT66 by ackerman\n");
- printf(" --------------------\n");
+ printf(" WINHT66 by ackerman                            2026/01/04\n");
+ printf(" ----------------------------------------------------------\n");
  printf("  -p(number port) -- COM port\n");
  printf("  -d              -- receive dump mem radio in dataload.dat\n");
  printf("  -s(file.ext)    -- send to radio file file.ext\n");
@@ -600,7 +633,7 @@ int main(int argc, char **argv)
 {
  ClearBuffers();
  
- printf("argc:%d\n",argc);
+ //printf("argc:%d\n",argc);
  if (argc<3)
  {  
   ShowHelp();
@@ -612,7 +645,7 @@ int main(int argc, char **argv)
  } 
 
     
- //system("PAUSE");
+ system("PAUSE");
  return 0;
 }
 
