@@ -12,7 +12,7 @@
    <div id="divUp">
     <table>
      <tbody>
-      <tr>
+      <tr>	  
        <th>CH</th>
 	   <th>RX Freq(Mhz)</th>
        <th>TX Freq(Mhz)</th>
@@ -140,7 +140,87 @@
     <table>
      <tbody>
 	  <tr><th></th><td></td></tr> 
+	  <tr><th></th><td></td></tr> 	  
+	  <tr>	   
+	   <th>OPTIONS</th>
+	   <td></td>
+	  </tr>
+	  <tr>
+	   <td>
+	    <table>
+		<tbody>
+		 <tr><th></th><td></td><td></td><td></td><td></td></tr> 
+		 <tr>
+		  <td>
+	       <label name="lblSquelchLevel">Squelch Level
+	        <select id="cmbSquelchLevel">
+		     <option value="0">0</option><option selected value="1">1</option><option value="2">2</option><option value="3">3</option>
+		     <option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option>
+		     <option value="8">8</option><option value="9">9</option>
+		    </select>
+		   </label>
+		  </td>
+		  <td>
+	       <label name="lblVoxLevel">Vox Level
+	        <select id="cmbVoxLevel">
+		     <option selected value="off">OFF</option><option value="1">1</option><option value="2">2</option><option value="3">3</option>
+		     <option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option>
+		     <option value="8">8</option><option value="9">9</option>
+		    </select>
+		   </label>
+		  </td>
+		  <td>
+	       <label name="lblScanMode">Scan Mode
+	        <select id="cmbScanMode"><option selected value="carrier">Carrier</option><option value="time">Time</option></select>
+		   </label>
+		  </td>
+		  <td>
+	       <label name="lblSpecMode">Spec Mode
+	        <select id="cmbSpecMode"><option selected value="spec1">Spec 1</option><option value="spec2">Spec 2</option></select>
+		   </label>
+		  </td>
+		  <td>
+	       <label name="lblBatterySave"><input type="checkbox" id="chkBatterySave"> Battery Save </label>
+		  </td>
+		 </tr>
+		 <tr> 
+	      <td>
+	       <label name="lblTimeOut">Tine Out Timer(s)
+	        <select id="cmbTimeOut">
+		     <option value="off">OFF</option><option value="30">30</option><option value="60">60</option><option value="90">90</option>
+		     <option value="120">120</option><option value="150">150</option><option selected value="180">180</option><option value="210">210</option>
+		     <option value="240">240</option><option value="270">270</option><option value="300">300</option>
+		    </select>
+		   </label>
+		  </td>
+		  <td>
+	       <label name="lblVoxDelay">Vox Delay Time(s)
+	        <select id="cmbVoxDelay">
+ 			 <option selected value="05">0,5</option><option value="10">1,0</option><option value="15">1,5</option>
+		     <option value="20">2,0</option><option value="25">2,5</option><option value="30">3,0</option>		  
+		    </select>
+		   </label>	   		  
+		  </td>		  
+		  <td>
+	       <label name="lblVoice">Voice Annunciation
+	        <select id="cmbVoice"><option value="none">None</option><option value="chinese">Chinese</option><option selected value="english">English</option></select>
+		   </label>		  
+		  </td>
+		  <td>
+           <label name="lblCodeSwitch"> Code switch
+	        <select id="cmbCodeSwitch"><option selected value="off">OFF</option><option value="on">ON</option></select>
+		   </label>		  
+		  </td>
+		  <td>
+           <label name="lblBeepTone"><input type="checkbox" id="chkBeepTone"> Beep Tone </label>		  
+		  </td>
+		 </tr>		 
+		</tbody>
+		</table>
+	   </td>
+	  </tr>
 	  <tr><th></th><td></td></tr> 
+	  <tr><th></th><td></td></tr> 	  
 	  <tr>
 	   <th>BANDS</th>
 	   <td></td>
@@ -285,9 +365,21 @@
   </div>
   
   <script>
+   var gb_option_beepTone=0;
+   var gb_option_batterySave=0;
+   var gb_option_voiceAnun="english";
+   var gb_option_scanMode="carrier";
+   var gb_option_codeSwitch="off";
+   var gb_option_squelchLevel="1";
+   var gb_option_timeOut="180";
+   var gb_option_voxLevel="off";
+   var gb_option_voxDelayTime="5";
+   var gb_option_specMode="spec1";
+	
    var cadHead="[M31_Analog_Redio]";
    var cadTail01="57 00 D0 0D 18 01 06 00 00 F8 FF 00 FF FF FF E8 0E ";
    var cadTail02="57 00 DD 0D FF FF FF FF FF FF FF FF FF FF FF FF FF ";
+   var hexTail01=[0x57,0x00,0xD0,0x0D,0x18,0x01,0x06,0x00,0x00,0xF8,0xFF,0x00,0xFF,0xFF,0xFF,0xE8,0x0E];
    var cadCh = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
    var cadPreCh = ["00","0D","1A","27","34","41","4E","5B","68","75","82","8F","9C","A9","B6","C3"]; 
    var cadOut="";
@@ -365,6 +457,7 @@
    {
     try 
 	{
+	 var cadAuxTail01="";
      cadOut="";
 	 cadOut += cadHead +"\r\n";
 	    
@@ -421,10 +514,13 @@
 	  cadOut += " \r\n";
 	 }
 	
-	 cadOut += cadTail01 + "\r\n";
+	
+	 cadAuxTail01= GenOptionsBits();
+	 
+	 cadOut += cadAuxTail01 + "\r\n"; //cadOut += cadTail01 + "\r\n";
 	 cadOut += cadTail02 + "\r\n";
 	
-     document.getElementById("txtareaOut").innerHTML = cadOut;
+     document.getElementById("txtareaOut").innerHTML = cadOut;	 	
 	}
 	catch (error) 
 	{
@@ -457,6 +553,20 @@
 	
 	 //Clear out
      document.getElementById("txtareaOut").innerHTML = "";
+	 
+	 //OPTIONS Clear
+	 document.getElementById("cmbSquelchLevel").value="1";
+	 document.getElementById("cmbVoxLevel").value="off";
+	 document.getElementById("cmbScanMode").value="carrier";
+	 document.getElementById("cmbSpecMode").value="spec1";
+	 document.getElementById("chkBatterySave").checked= false;
+	 
+	 document.getElementById("cmbTimeOut").value="180";
+	 document.getElementById("cmbVoxDelay").value="05";
+	 document.getElementById("cmbVoice").value="english";
+	 document.getElementById("cmbCodeSwitch").value="off";
+	 document.getElementById("chkBeepTone").checked= false;
+	 
 	}
     catch (error)
 	{
@@ -1086,6 +1196,246 @@
     }
    }
       
+	  
+   function GenOptionsBits()
+   {
+    var byte4= 0x18;
+	var byte5= 0x01;
+	var byte6= 0x06;
+	var byte7= 0x00;
+	var byte8= 0x00;
+	var byte11= 0x00;
+	var aBit= 0;
+	var aux;
+	var aReturn="";
+    //beep tone          Tail 0  byte:4  bit 0
+	// 18 00011000  beep off
+    // 19 00011001  beep on
+	//battery save       Tail 0  byte:4  bit 1
+	// 18 00011000  battery off
+	// 1A 00011010  battery on
+	//Voice Anunntation  Tail 0  byte:4  bit 2,3
+	// 10 00010000  none        00
+	// 14 00010100  chinese     01
+	// 18 00011000  english		10	
+	//Scan Mode          Tail 0  byte:4  bit 6
+	// 18 00011000 carrier
+	// 58 01011000 Time	
+	//code switch        Tail 0  byte:4  bit 7
+	// 18 00011000  code off
+	// 98 10011000  code on
+	//Squelch level      Tail 0  byte 5  bit 0,1,2,3
+	// 00 00000000 0
+	// 01 00000001 1
+	// 02 00000010 2
+	// 03 00000011 3
+	// 04 00000100 4
+	// 05 00000101 5
+	// 06 00000110 6
+	// 07 00000111 7
+	// 08 00001000 8
+	// 09 00001001 9		
+	//Tine OutTimer      Tail 0  byte 6  bit 0,1,2,3
+	// 00 00000000 off
+	// 01 00000001 30
+	// 02 00000010 60
+	// 03 00000011 90
+	// 04 00000100 120
+	// 05 00000101 150
+	// 06 00000110 180
+	// 07 00000111 210
+	// 08 00001000 240
+	// 09 00001001 270
+	// 0A 00001010 300
+	//Vox Level          Tail 0  byte 7  bit 0,1,2,3
+	// 00 00000000 off
+	// 01 00000001 1
+	// 02 00000010 2
+	// 03 00000011 3
+	// 04 00000100 4
+	// 05 00000101 5
+	// 06 00000110 6
+	// 07 00000111 7
+	// 08 00001000 8
+	// 09 00001001 9	
+	//Vox delay time     Tail 0  byte:8  bit 0,1,2
+	// 00 00000000 0,5
+	// 01 00000001 1,0
+	// 02 00000010 1,5
+	// 03 00000011 2,0
+	// 04 00000100 2,5
+	// 05 00000101 3,0	
+	//Spec Mode          Tail 0  byte:11  bit 1
+	// 00 00000000  spec1
+	// 01 00000001  spec2	
+	
+	byte4= (byte4 & 0xFE);
+	aBit= (document.getElementById("chkBeepTone").checked===true)? 1: 0;
+	byte4= byte4 | aBit;
+		
+	byte4= (byte4 & 0xFD);
+	aBit= (document.getElementById("chkBatterySave").checked===true)? 1:0;
+	byte4= byte4 | (aBit<<1);
+		
+	byte4= (byte4 & 0xF3);
+	aux= document.getElementById("cmbVoice").value;	
+	//alert(aux);
+	switch (aux)
+	{
+     case "none": aBit= 0x00; break;
+	 case "chinese": aBit= 0x01; break;
+	 case "english": aBit= 0x02; break;
+	 default: aBit= 0x01; break;
+	}
+	byte4= byte4 | (aBit<<2);
+		
+	byte4= (byte4 & 0xBF);	
+	aux= document.getElementById("cmbScanMode").value;
+	//alert(aux);
+	switch (aux)
+	{
+     case "carrier": aBit= 0x00; break;
+	 case "time": aBit= 0x01; break;	 
+	 default: aBit= 0x00; break;
+	}	
+	byte4= byte4 | (aBit<<6);
+		
+	byte4= (byte4 & 0x7F);
+	aux= document.getElementById("cmbCodeSwitch").value;
+	//alert(aux);
+	switch (aux)
+	{
+     case "off": aBit= 0x00; break;
+	 case "on": aBit= 0x01; break;	 
+	 default: aBit= 0x00; break;
+	}		
+	byte4= byte4 | (aBit<<7);
+	
+	
+	
+	byte5= (byte5 & 0xF0);
+	aux= document.getElementById("cmbSquelchLevel").value;
+	//alert(aux);
+	switch (aux)
+	{
+     case "0": aBit=0x00; break;
+	 case "1": aBit=0x01; break;
+	 case "2": aBit=0x02; break;
+	 case "3": aBit=0x03; break;
+	 case "4": aBit=0x04; break;
+	 case "5": aBit=0x05; break;
+	 case "6": aBit=0x06; break;
+	 case "7": aBit=0x07; break;
+	 case "8": aBit=0x08; break;
+	 case "9": aBit=0x09; break;
+	 default: aBit=0x01; break;
+	}
+	byte5= byte5 | aBit;
+	
+	
+	
+	byte6= (byte6 & 0xF0);	
+	aux= document.getElementById("cmbTimeOut").value;
+	//alert(aux);
+	switch (aux)
+	{
+     case "off": aBit=0x00; break;
+	 case "30": aBit=0x01; break;
+	 case "60": aBit=0x02; break;
+	 case "90": aBit=0x03; break;
+	 case "120": aBit=0x04; break;
+	 case "150": aBit=0x05; break;
+	 case "180": aBit=0x06; break;
+	 case "210": aBit=0x07; break;
+	 case "240": aBit=0x08; break;
+	 case "270": aBit=0x09; break;
+	 case "300": aBit=0x0A; break;
+	 default: aBit=0x06; break;
+	}
+	byte6= byte6 | aBit;	
+	
+	
+	
+	byte7= (byte7 & 0xF0);	
+	aux= document.getElementById("cmbVoxLevel").value;
+	//alert(aux);
+	switch (aux)
+	{
+     case "off": aBit=0x00; break;
+	 case "1": aBit=0x01; break;
+	 case "2": aBit=0x02; break;
+	 case "3": aBit=0x03; break;
+	 case "4": aBit=0x04; break;
+	 case "5": aBit=0x05; break;
+	 case "6": aBit=0x06; break;
+	 case "7": aBit=0x07; break;
+	 case "8": aBit=0x08; break;
+	 case "9": aBit=0x09; break;	 
+	 default: aBit=0x00; break;
+	}
+	byte7= byte7 | aBit;	
+
+
+    byte8= (byte8 & 0xF8);
+	aux= document.getElementById("cmbVoxDelay").value;
+	//alert(aux);
+	switch (aux)
+	{
+     case "05": aBit=0x00; break;
+	 case "10": aBit=0x01; break;
+	 case "15": aBit=0x02; break;
+	 case "20": aBit=0x03; break;
+	 case "25": aBit=0x04; break;
+	 case "30": aBit=0x05; break;	 	
+	 default: aBit=0x00; break;
+	}
+	byte8= byte8 | aBit;
+	
+	
+	byte11= (byte8 & 0x01);
+	aux= document.getElementById("cmbSpecMode").value;
+	//alert(aux);
+	switch (aux)
+	{
+     case "spec1": aBit=0x00; break;
+	 case "spec2": aBit=0x01; break;
+	 default: aBit=0x00; break;
+	}
+	byte11= byte11 | aBit;
+	
+	
+	
+	//var cad= byte4.toString(16).toUpperCase().padStart(8, '0');
+	//cad= byte5.toString(16).toUpperCase().padStart(8, '0');
+	//cad= byte6.toString(16).toUpperCase().padStart(8, '0');
+	//cad= byte7.toString(16).toUpperCase().padStart(8, '0');
+	//cad= byte8.toString(16).toUpperCase().padStart(8, '0');
+	//cad= byte11.toString(16).toUpperCase().padStart(8, '0');
+	//alert(cad); 
+	
+	for (var i=0;i<4;i++)
+	{
+	 aReturn+= hexTail01[i].toString(16).toUpperCase().padStart(2, '0')+" ";
+	}
+	aReturn+= byte4.toString(16).toUpperCase().padStart(2, '0')+ " ";
+	aReturn+= byte5.toString(16).toUpperCase().padStart(2, '0')+ " ";
+	aReturn+= byte6.toString(16).toUpperCase().padStart(2, '0')+ " ";
+	aReturn+= byte7.toString(16).toUpperCase().padStart(2, '0')+ " ";
+	aReturn+= byte8.toString(16).toUpperCase().padStart(2, '0')+ " ";    
+	for (var i=9;i<11;i++)
+	{
+	 aReturn+= hexTail01[i].toString(16).toUpperCase().padStart(2, '0')+" ";
+	}			
+	aReturn+= byte11.toString(16).toUpperCase().padStart(2, '0')+ " ";	
+	for (var i=12;i<17;i++)
+	{
+	 aReturn+= hexTail01[i].toString(16).toUpperCase().padStart(2, '0')+" ";
+	}				
+	
+	//alert(aReturn);
+		
+	return aReturn;	
+   }
    
    
    //Init
