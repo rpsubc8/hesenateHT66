@@ -13,6 +13,10 @@ char paramSendFile[256]="custom.dat";
 unsigned char gb_do_dump=0;
 unsigned char gb_do_send=0;
 unsigned char gb_do_help=0;
+unsigned char gb_do_wall= 1;
+unsigned char gb_do_wopt= 0;
+unsigned char gb_do_wch= 0;
+unsigned char gb_do_pause=0;
 char cHex[16]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 char dataSendFile[1024];
 unsigned short int gb_contDataSendFile=0;
@@ -85,6 +89,7 @@ void initSerialPort()
  if (hComm == INVALID_HANDLE_VALUE)
  {
   printf("ERROR!!! OPEN serial port\n");
+  gb_error=1;
   return;
  }
 
@@ -95,6 +100,7 @@ void initSerialPort()
  {
   printf("ERROR!!! get status port\n");
   CloseHandle(hComm);
+  gb_error=1;
   return;
  }
 
@@ -109,6 +115,7 @@ void initSerialPort()
  {
   printf("ERROR!!! config serial port\n");
   CloseHandle(hComm);
+  gb_error=1;
   return;
  }
 
@@ -297,20 +304,24 @@ void DumpMemRadio()
 {
  int auxContBytes=0;
  
+ gb_error=0; 
  initSerialPort();  //Init serial
  
- SendHandshake();
- 
- gb_receiv_cont=0;
- for (unsigned char i=0;i<18;i++)
+ if (gb_error==0)
  {
-  sendData(trama5,sizeof(trama5));
-  receiveData(0x57); //expected value 5700000D318DA802318DA802FFFFFFFFFF
-  trama5[2]+=0x0D; //Add channel
+  SendHandshake();
+ 
+  gb_receiv_cont=0;
+  for (unsigned char i=0;i<18;i++)
+  {
+   sendData(trama5,sizeof(trama5));
+   receiveData(0x57); //expected value 5700000D318DA802318DA802FFFFFFFFFF
+   trama5[2]+=0x0D; //Add channel
+  }
  }
 
  closeSerialPort();  //Close serial
-
+ 
  ShowOut();
  
 
@@ -470,14 +481,31 @@ void SendMemRadio()
 
  gb_error=0;     
  initSerialPort();  //Init serial
+ if (gb_error==0)
+ {  
+  SendHandshake();
  
- SendHandshake();
- 
- gb_receiv_cont=0;
- for (unsigned char i=0;i<18;i++)
- {
-  sendData(dataSendTX[i],34);
-  receiveData(0x06);  //expected value 06
+  gb_receiv_cont=0;
+  for (unsigned char i=0;i<18;i++)
+  {
+   if (gb_do_wall==1)
+   {
+   }
+   else
+   {
+    if (
+        ((gb_do_wch==1)&&(i>=16)&&(i<18))
+        ||
+        ((gb_do_wopt==1)&&(i>=0)&&(i<16))
+       )
+    {//only send channel, skip options
+     continue;
+    }
+   }
+
+   sendData(dataSendTX[i],34);
+   receiveData(0x06);  //expected value 06
+  }
  }
 
  closeSerialPort();  //Close serial     
@@ -555,6 +583,10 @@ void GetParam(int argc, char **argv)
 {
  gb_do_dump=0;     
  gb_do_send=0;
+ gb_do_wall= 1;
+ gb_do_wopt= 0;
+ gb_do_wch= 0; 
+ 
  const char *cad; 
  
  for (unsigned short int i=1;i<argc;i++)
@@ -585,9 +617,34 @@ void GetParam(int argc, char **argv)
     }
     else
     {
-     if (strstr(argv[i],"-?")!=NULL)        
+     if (strstr(argv[i],"-wch")!=NULL)
      {
-      gb_do_help=1;
+      gb_do_wall= 0;
+      gb_do_wopt= 0;
+      gb_do_wch= 1;
+     }
+     else
+     {
+      if (strstr(argv[i],"-wopt")!=NULL)
+      {
+       gb_do_wall= 0;
+       gb_do_wopt= 1;
+       gb_do_wch= 0;
+      }         
+      else
+      {
+       if (strstr(argv[i],"-wait")!=NULL)
+       {
+        gb_do_pause=1;
+       }
+       else
+       {       
+        if (strstr(argv[i],"-?")!=NULL)        
+        {
+         gb_do_help=1;
+        }
+       }
+      }
      }
     }
    }
@@ -603,6 +660,25 @@ void GetParam(int argc, char **argv)
  {
   printf("Param Send:%s\n",paramSendFile);
  }
+ 
+ if (gb_do_wall==1)
+ {
+  printf("Write channels and options\n");
+ }
+ if (gb_do_wch==1)
+ {
+  printf("Write only channels\n");
+ }
+ if (gb_do_wopt==1)
+ {
+  printf("Write only options\n");
+ } 
+ 
+ if(gb_do_pause==1)
+ {
+  printf("Pause\n");
+ }
+ 
  //system("PAUSE");
 }
 
@@ -614,6 +690,9 @@ void ShowHelp()
  printf("  -p(number port) -- COM port\n");
  printf("  -d              -- receive dump mem radio in dataload.dat\n");
  printf("  -s(file.ext)    -- send to radio file file.ext\n");
+ printf("  -wch            -- send to radio only channels\n");
+ printf("  -wopt           -- send to radio only options\n");
+ printf("  -wait           -- when finished, wait to press the key\n");
  printf("  -?              -- show help\n");
  printf("\n");
  printf(" Example dump memory radio from COM14 in dataload.dat:\n");
@@ -622,6 +701,12 @@ void ShowHelp()
  printf(" Example send custom.dat to memory radio from COM14:\n");
  printf("   winht66 -p14 -scustom.dat\n");
  printf("\n");
+ printf(" Example send custom.dat to memory radio only options from COM14:\n");
+ printf("   winht66 -p14 -scustom.dat -wopt\n");
+ printf("\n");
+ printf(" Example send custom.dat to memory radio only channels from COM14:\n");
+ printf("   winht66 -p14 -scustom.dat -wch\n");
+ printf("\n"); 
 }
 
 
@@ -644,8 +729,10 @@ int main(int argc, char **argv)
   DoAction(argc,argv);
  } 
 
-    
- //system("PAUSE");
+ if (gb_do_pause==1)
+ {
+  system("PAUSE");
+ }
  return 0;
 }
 
