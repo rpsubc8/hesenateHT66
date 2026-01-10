@@ -15,121 +15,223 @@
       <tr>	  
        <th>CH</th>
 	   <th>RX Freq(Mhz)</th>
-       <th>TX Freq(Mhz)</th>
+	   <th>CTC/DCS DEC</th>
+       <th>TX Freq(Mhz)</th>	   
+	   <th>CTC/DCS ENC</th>
+	   <th>Scan Add</th>	   
        <th>Power TX</th>
-	   <th>W/N</th>
+	   <th>W/N</th>	   
+	   <th>Busy Lock</th>
+	   <th>Scramble</th>
+	   <th>Spec Code</th>
 	  </tr>
       <tr>
 	   <td>1</td>
 	   <td><input type="number" id="textrx1" name="textrx1"></td>
+	   <td><select id="cmbctcdec1"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx1" name="texttx1"></td>
+	   <td><select id="cmbctcenc1"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan1"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx1"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn1"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy1"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble1"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode1"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
       </tr>
       <tr>
 	   <td>2</td>
 	   <td><input type="number" id="textrx2" name="textrx2"></td>
+	   <td><select id="cmbctcdec2"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx2" name="texttx2"></td>
+	   <td><select id="cmbctcenc2"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan2"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx2"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn2"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy2"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble2"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode2"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>3</td>
 	   <td><input type="number" id="textrx3" name="textrx3"></td>
+	   <td><select id="cmbctcdec3"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx3" name="texttx3"></td>
+	   <td><select id="cmbctcenc3"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan3"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx3"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn3"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy3"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble3"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode3"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>4</td>
 	   <td><input type="number" id="textrx4" name="textrx4"></td>
+	   <td><select id="cmbctcdec4"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx4" name="texttx4"></td>
+	   <td><select id="cmbctcenc4"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan4"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx4"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn4"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy4"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble4"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode4"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>5</td>
 	   <td><input type="number" id="textrx5" name="textrx5"></td>
+	   <td><select id="cmbctcdec5"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx5" name="texttx5"></td>
+	   <td><select id="cmbctcenc5"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan5"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx5"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn5"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy5"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble5"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode5"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>6</td>
 	   <td><input type="number" id="textrx6" name="textrx6"></td>
+	   <td><select id="cmbctcdec6"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx6" name="texttx6"></td>
+	   <td><select id="cmbctcenc6"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan6"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx6"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn6"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy6"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble6"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode6"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>7</td>
 	   <td><input type="number" id="textrx7" name="textrx7"></td>
+	   <td><select id="cmbctcdec7"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx7" name="texttx7"></td>
+	   <td><select id="cmbctcenc7"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan7"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx7"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn7"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy7"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble7"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode7"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>	
 	  <tr>
 	   <td>8</td>
 	   <td><input type="number" id="textrx8" name="textrx8"></td>
+	   <td><select id="cmbctcdec8"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx8" name="texttx8"></td>
+	   <td><select id="cmbctcenc8"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan8"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx8"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn8"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy8"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble8"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode8"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>	
       <tr>
 	   <td>9</td>
 	   <td><input type="number" id="textrx9" name="textrx9"></td>
+	   <td><select id="cmbctcdec9"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx9" name="texttx9"></td>
+	   <td><select id="cmbctcenc9"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan9"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx9"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn9"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy9"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble9"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode9"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>10</td>
 	   <td><input type="number" id="textrx10" name="textrx10"></td>
+	   <td><select id="cmbctcdec10"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx10" name="texttx10"></td>
+	   <td><select id="cmbctcenc10"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan10"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx10"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn10"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy10"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble10"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode10"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>11</td>
 	   <td><input type="number" id="textrx11" name="textrx11"></td>
+	   <td><select id="cmbctcdec11"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx11" name="texttx11"></td>
+	   <td><select id="cmbctcenc11"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan11"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx11"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn11"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy11"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble11"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode11"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>12</td>
 	   <td><input type="number" id="textrx12" name="textrx12"></td>
+	   <td><select id="cmbctcdec12"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx12" name="texttx12"></td>
+	   <td><select id="cmbctcenc12"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan12"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx12"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn12"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy12"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble12"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode12"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>13</td>
 	   <td><input type="number" id="textrx13" name="textrx13"></td>
+	   <td><select id="cmbctcdec13"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx13" name="texttx13"></td>
+	   <td><select id="cmbctcenc13"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan13"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx13"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn13"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy13"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble13"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode13"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>14</td>
 	   <td><input type="number" id="textrx14" name="textrx14"></td>
+	   <td><select id="cmbctcdec14"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx14" name="texttx14"></td>
+	   <td><select id="cmbctcenc14"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan14"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx14"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn14"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy14"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble14"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode14"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>15</td>
 	   <td><input type="number" id="textrx15" name="textrx15"></td>
+	   <td><select id="cmbctcdec15"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx15" name="texttx15"></td>
+	   <td><select id="cmbctcenc15"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan15"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx15"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn15"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy15"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble15"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode15"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>
       <tr>
 	   <td>16</td>
 	   <td><input type="number" id="textrx16" name="textrx16"></td>
+	   <td><select id="cmbctcdec16"><option selected value="off">OFF</option></select></td>
        <td><input type="number" id="texttx16" name="texttx16"></td>
+	   <td><select id="cmbctcenc16"><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscan16"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
        <td><select id="cmbtx16"><option selected value="opcion1">LOW</option><option value="opcion2">HIGH</option></select></td>
        <td><select id="cmbwn16"><option selected value="opcion1">NARROW</option><option value="opcion2">WIDE</option></select></td>
+	   <td><select id="cmbbusy16"><option value="on">ON</option><option selected value="off">OFF</option></select></td>
+	   <td><select id="cmbscramble16"><option value="yes">YES</option><option selected value="no">NO</option></select></td>
+	   <td><select id="cmbspeccode16"><option value="on">ON</option><option selected value="off">OFF</option></select></td>	   
       </tr>		
      </tbody>
     </table>
@@ -382,6 +484,9 @@
    var byte7= 0x00;
    var byte8= 0x00;
    var byte11= 0x00;
+   
+   var gb_ch_byte16=[0xF7,0xF7,0xF7,0xF7,0xF7,0xF7,0xF7,0xF7,0xF7,0xF7,0xF7,0xF7,0xF7,0xF7,0xF7,0xF7]; //byte16 16 channels
+   
 	
    var cadHead="[M31_Analog_Redio]";
    //var cadTail01="57 00 D0 0D 18 01 06 00 00 F8 FF 00 FF FF FF E8 0E ";
@@ -469,7 +574,7 @@
 	 cadOut += cadHead +"\r\n";
 	    
 	 for (var i=0;i<16;i++)
-	 {
+	 {	 
       cadOut += "57 00 " + cadPreCh[i] + " 0D " +cadCh[i] 
 	 
 	  //Freq RX
@@ -494,29 +599,32 @@
 	  cadByte[3]= cadHex.substring(6,8);
 	  cadOut += cadByte[3]+" "+ cadByte[2]+ " "+ cadByte[1] +" "+cadByte[0]+" ";
 		 		 
- 	  cadOut += "FF FF FF FF F";
+ 	  //cadOut += "FF FF FF FF F";
+	  
+	  cadOut += "FF FF FF FF ";
+	  cadOut += GetOptionsCh((i+1));
 
-      //LOW HIGH
-	  cadNameObj= "cmbtx"+(i+1).toString();
-	  cadTxPower= document.getElementById(cadNameObj).value;
-	 
-	  //NARROW WIDE
-	  cadNameObj= "cmbwn"+(i+1).toString();
-	  cadwn= document.getElementById(cadNameObj).value;
-	 	 
-	  if ((cadTxPower=="opcion1")&&(cadwn=="opcion1")){ cadOut += "7"; } //LOW NARROW
-	  else
-	  {//HIGH NARROW
-	   if ((cadTxPower=="opcion2")&&(cadwn=="opcion1")){ cadOut += "F"; }
-	   else
-	   {//HIGH WIDE
-        if ((cadTxPower=="opcion2")&&(cadwn=="opcion2")){ cadOut += "B"; }
-	    else
-	    {//LOW WIDE
-	     if ((cadTxPower=="opcion1")&&(cadwn=="opcion2")){ cadOut += "3"; }
-	    }
-	   }
-	  }
+//      //LOW HIGH
+//	  cadNameObj= "cmbtx"+(i+1).toString();
+//	  cadTxPower= document.getElementById(cadNameObj).value;
+//	 
+//	  //NARROW WIDE
+//	  cadNameObj= "cmbwn"+(i+1).toString();
+//	  cadwn= document.getElementById(cadNameObj).value;
+//	 	 
+//	  if ((cadTxPower=="opcion1")&&(cadwn=="opcion1")){ cadOut += "7"; } //LOW NARROW
+//	  else
+//	  {//HIGH NARROW
+//	   if ((cadTxPower=="opcion2")&&(cadwn=="opcion1")){ cadOut += "F"; }
+//	   else
+//	   {//HIGH WIDE
+//        if ((cadTxPower=="opcion2")&&(cadwn=="opcion2")){ cadOut += "B"; }
+//	    else
+//	    {//LOW WIDE
+//	     if ((cadTxPower=="opcion1")&&(cadwn=="opcion2")){ cadOut += "3"; }
+//	    }
+//	   }
+//	  }
 	 
 	  cadOut += " \r\n";
 	 }
@@ -546,15 +654,35 @@
 	 {
 	  cadNameObj= "textrx"+(i+1).toString();
       document.getElementById(cadNameObj).value  = ""; //Clear rx freq
+	  
+	  cadNameObj= "cmbctcdec"+(i+1).toString();
+	  document.getElementById(cadNameObj).value  = "off";
 	 
 	  cadNameObj= "texttx"+(i+1).toString();
 	  document.getElementById(cadNameObj).value  = ""; //Clear tx freq
+	  
+	  cadNameObj= "cmbctcenc"+(i+1).toString();
+	  document.getElementById(cadNameObj).value  = "off";
 	 
+	  cadNameObj= "cmbscan"+(i+1).toString();
+	  document.getElementById(cadNameObj).value  = "no";
+	  	 
 	  cadNameObj= "cmbtx"+(i+1).toString();
 	  document.getElementById(cadNameObj).value  = "opcion1"; //low
 	 
 	  cadNameObj= "cmbwn"+(i+1).toString();
 	  document.getElementById(cadNameObj).value  = "opcion1"; //narrow
+	  
+	  cadNameObj= "cmbbusy"+(i+1).toString();
+	  document.getElementById(cadNameObj).value  = "off";
+
+	  cadNameObj= "cmbscramble"+(i+1).toString();
+	  document.getElementById(cadNameObj).value  = "no";
+
+	  cadNameObj= "cmbspeccode"+(i+1).toString();
+	  document.getElementById(cadNameObj).value  = "off";
+	  
+	  gb_ch_byte16[i]= 0xF7;
 	 }
      
 	
@@ -580,6 +708,7 @@
 	 byte7= 0x00;
 	 byte8= 0x00;
 	 byte11= 0x00;
+	 
 	}
     catch (error)
 	{
@@ -965,7 +1094,85 @@
     }	 
    }
    
+   //Load options channel
+   function LoadOptionsBitsCh(ch, cadData)
+   {
+    var aBit=0;	
+	var cadCmb="";
+	var auxByte=0;
+	var numData=0;
+	var cadCh="";
+	
+	try
+	{
+	 cadCh= ch.toString();
+	 numData= parseInt(cadData,16);
+	 //alert(numData.toString(16).toUpperCase().padStart(2, '0'));
+	 gb_ch_byte16[(ch-1)]= numData;
+	 auxByte= numData;
+	 
+	 aBit= (auxByte & 0x01);
+	 switch (aBit)
+	 {
+      case 0x00: cadCmb="on"; break;
+	  case 0x01: cadCmb="off"; break;	  
+	  default: cadCmb="off"; break;
+	 }
+	 document.getElementById("cmbbusy"+cadCh).value= cadCmb;
+	 
+	 aBit= ((auxByte>>2) & 0x01);
+	 switch (aBit)
+	 {
+      case 0x00: cadCmb="opcion2"; break; //wide
+	  case 0x01: cadCmb="opcion1"; break; //narrow
+	  default: cadCmb="opcion1"; break;
+	 }
+	 document.getElementById("cmbwn"+cadCh).value= cadCmb;
+	 
+	 aBit= ((auxByte>>3) & 0x01);
+	 switch (aBit)
+	 {
+      case 0x00: cadCmb="opcion1"; break; //low
+	  case 0x01: cadCmb="opcion2"; break; //high
+	  default: cadCmb="opcion1"; break;
+	 }
+	 document.getElementById("cmbtx"+cadCh).value= cadCmb;
+	 
+	 aBit= ((auxByte>>4) & 0x01);
+	 switch (aBit)
+	 {
+      case 0x01: cadCmb="no"; break; //no
+	  case 0x00: cadCmb="yes"; break; //yes
+	  default: cadCmb="no"; break;
+	 }
+	 document.getElementById("cmbscan"+cadCh).value= cadCmb;
+	 
+	 aBit= ((auxByte>>5) & 0x01);
+	 switch (aBit)
+	 {
+      case 0x01: cadCmb="no"; break; //no
+	  case 0x00: cadCmb="yes"; break; //yes
+	  default: cadCmb="no"; break;
+	 }
+	 document.getElementById("cmbscramble"+cadCh).value= cadCmb;
+	 
+	 aBit= ((auxByte>>7) & 0x01);
+	 switch (aBit)
+	 {
+      case 0x01: cadCmb="off"; break; //off
+	  case 0x00: cadCmb="on"; break; //on
+	  default: cadCmb="off"; break;
+	 }
+	 document.getElementById("cmbspeccode"+cadCh).value= cadCmb;	 	 	 	 	 	 
+	 	 
+	}
+    catch (error)
+    {
+     console.error(error);
+    }	
+   }
    
+   //Load options tail1
    function LoadOptionsBits(cadData)
    {
     var aBit=0;	
@@ -1091,6 +1298,7 @@
    {
     var pos=0x20;	
 	var cadPowerWN="";
+	var cadOptCh="";
 	
 	try
 	{
@@ -1131,9 +1339,15 @@
 	 
 	  pos+= 13;
 	  cadPowerWN= cadData.substr(pos,1);
+
+      pos--;
+	  cadOptCh= cadData.substr(pos,2);	  
+	  LoadOptionsBitsCh((i+1),cadOptCh);
+	  pos++;
+	  
 	  //console.log(cadPowerWN);
 	  pos+= 16;
-	 
+	 	 		 
 	  if (cadPowerWN=='7')
 	  {//LOW NARROW
 	   cadNameObj= "cmbtx"+(i+1).toString();	
@@ -1332,7 +1546,110 @@
     }
    }
       
+   //Options channel
+   function GetOptionsCh(ch)
+   {
+    var aReturn="";
+	var aBit= 0;
+	var aux;
+	var cadCh="";
+	var auxByte=0;
+	//16 channel
+	//Busy Lock    byte:16  bit 0
+	// F7 11110111  OFF
+	// F6 11110110  ON
+	//Wide Narrow  byte:16  bit 2
+	// F7 11110111  NARROW
+	// F3 11110011  WIDE
+	//Power TX     byte:16  bit 3
+	// F7 11110111  LOW
+	// FF 11111111  HIGH
+	//Scan Add     byte:16  bit 4
+	// F7 11110111  NO
+	// E7 11100111  YES
+	//Scramble     byte:16  bit 5
+	// F7 11110111  NO
+	// D7 11010111  YES	
+	//Spec code    byte:16  bit:7
+	// F7 11110111  off
+	// 77 01110111  on		
+	
+	try
+	{
+	 cadCh= ch.toString();	 
+	 	 
+	 auxByte= (gb_ch_byte16[(ch-1)] & 0xFE);
+	 aux= document.getElementById("cmbbusy"+cadCh).value;
+	 switch (aux)
+	 {
+      case "off": aBit= 0x01; break;
+	  case "on": aBit= 0x00; break;	 
+	  default: aBit= 0x01; break;
+	 }		
+	 auxByte= auxByte | aBit;
+	 
+     auxByte= (auxByte & 0xFB);
+	 aux= document.getElementById("cmbwn"+cadCh).value;
+	 switch (aux)
+	 {//opcion1 NARROW, opcion2 WIDE
+      case "opcion1": aBit= 0x01; break; //narrow
+	  case "opcion2": aBit= 0x00; break; //wide 
+	  default: aBit= 0x01; break;
+	 }		
+	 auxByte= auxByte | (aBit<<2);
+	 
+     auxByte= (auxByte & 0xF7);
+	 aux= document.getElementById("cmbtx"+cadCh).value;
+	 switch (aux)
+	 {//opcion1 LOW, opcion2 HIGH	 
+      case "opcion1": aBit= 0x00; break; //low
+	  case "opcion2": aBit= 0x01; break; //high
+	  default: aBit= 0x00; break;
+	 }		
+	 auxByte= auxByte | (aBit<<3);
+	 
+     auxByte= (auxByte & 0xEF);
+	 aux= document.getElementById("cmbscan"+cadCh).value;	 
+	 switch (aux)
+	 {
+	  case "no": aBit= 0x01; break; //no
+      case "yes": aBit= 0x00; break; //yes
+	  default: aBit= 0x01; break;
+	 }		
+	 auxByte= auxByte | (aBit<<4);
+	 
+     auxByte= (auxByte & 0xDF);
+	 aux= document.getElementById("cmbscramble"+cadCh).value;	 
+	 switch (aux)
+	 {
+	  case "no": aBit= 0x01; break; //no
+      case "yes": aBit= 0x00; break; //yes
+	  default: aBit= 0x01; break;
+	 }		
+	 auxByte= auxByte | (aBit<<5);
+	 
+     auxByte= (auxByte & 0x7F);
+	 aux= document.getElementById("cmbspeccode"+cadCh).value;	 
+	 switch (aux)
+	 {
+	  case "off": aBit= 0x01; break; //off
+      case "on": aBit= 0x00; break; //on
+	  default: aBit= 0x01; break;
+	 }		
+	 auxByte= auxByte | (aBit<<7);	 	 	 
+	 
+	 
+	 
+	 aReturn= auxByte.toString(16).toUpperCase().padStart(2, '0');
+	}
+	catch (error)
+    {
+     console.error(error);
+    }	
+    return aReturn;
+   }
 	  
+   //Options tail1
    function GenOptionsBits()
    {
 	var aBit= 0;
@@ -1397,7 +1714,7 @@
 	// 05 00000101 3,0	
 	//Spec Mode          Tail 0  byte:11  bit 1
 	// 00 00000000  spec1
-	// 01 00000001  spec2	
+	// 01 00000001  spec2
 	
 	try
 	{
@@ -1565,6 +1882,11 @@
 	 }				
 	
 	 //alert(aReturn);
+	 
+	 for (var i=0;i<16;i++)
+	 {
+	  
+	 }
 	}
     catch (error)
     {
