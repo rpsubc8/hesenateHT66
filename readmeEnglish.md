@@ -242,4 +242,14 @@ I have left the .dat files for the LOW, HIGH, NARROW, and WIDE settings:
 I have created a simplified CPS to be able to perform the dump, as well as to be able to send the custom.dat files to the radio via USB serial port, without having to use the official HESENATE.<br>
 It has no checks, and for now it is just for home use, but it allows you to send frequencies correctly and dump the current content of the radio.<br><br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewcpswinht66.gif'></center>
-
+<br>
+We can send all the channel and option information to the radio, or just one part of it, using the -wch or -wopt option. The options are VOX, squelch, battery saving, etc.<br>
+If we wanted to read the contents of the radio on COM5:<br>
+<pre>
+ winht66 -p5 -d
+</pre>
+By default, when invoking the -d command, the data will be saved in the dataload.dat file.<br><br>
+If we wanted to send the entire contents of a file (custom.dat), including all 16 channels and the options, to the radio on COM5 port:<br>
+<pre>
+ winht66 -p5 -scustom.dat
+</pre>
