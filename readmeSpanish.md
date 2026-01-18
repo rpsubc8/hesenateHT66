@@ -237,9 +237,10 @@ He dejado los .dat de las configuraciones LOW, HIGH, NARROW y WIDE:
 
 <br><br>
 <h1>Custom CPS</h1>
-He creado un CPS simplificado para poder hacer el dump, así como poder enviar los custom.dat a la radio por puerto serie usb, sin necesidad de usar el oficial de HESENATE.<br>
+He creado un CPS simplificado para Windows (32 bits) para poder hacer el dump, así como poder enviar los custom.dat a la radio por puerto serie usb, sin necesidad de usar el oficial de HESENATE.<br>
 No tiene chequeos, y por ahora es de andar por casa, pero permite enviar correctamente las frecuencias y hacer un dumpeado del contenido actual de la radio.<br><br>
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewcpswinht66.gif'></center>
+<a href='http://rpsubc8.github.io/hesenateHT66/cpsHT66/winht66/winht66.exe'>winht66.exe</a><br>
 <br>
 Podemos enviar a la radio toda la información de los canales y opciones, o bien sólo una de las partes, con la opción -wch o -wopt. Las opciones son el VOX, squeltch, ahorro de batería, etc...<br>
 Si quisieramos leer el contenido de la radio del puerto COM5:<br>
@@ -250,4 +251,14 @@ Por defecto, al invocar al comando -d los datos se guardarán en el archivo data
 Si quisieramos enviar el contenido completo de un archivo (custom.dat), tanto de los 16 canales, como las opciones a la radio en el puerto COM5:<br>
 <pre>
  winht66 -p5 -scustom.dat
+</pre>
+<br>
+También he añadido una versión para MSDOS con DOSBOX usando el puerto COM1.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewcpsdosht66.gif'></center>
+<a href='http://rpsubc8.github.io/hesenateHT66/cpsHT66/dosht66/DOSHT66.EXE'>DOSHT66.EXE</a><br>
+<br>
+La opción de lectura (-d) no funciona muy bien, pero el envio de datos hacia la radio, si, por lo que puede ser útil.<br>
+En el fichero de configuración del DOSBOX se debe activar las opciones de directserial y especificar el puerto físico real, que si fuera el COM14,sería:
+<pre>
+ serial1=directserial realport:COM14
 </pre>
