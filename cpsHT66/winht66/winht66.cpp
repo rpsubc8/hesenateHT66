@@ -38,8 +38,8 @@ char trama5[4]={0x52,0x00,0x00,0x0D};
 
 unsigned char gb_error=0;
 unsigned char gb_warn=0;
-char cadOut[1024];
-unsigned char gb_receiv[1024];
+//char cadOut[1024];
+unsigned char gb_receiv[2048];
 unsigned short int gb_receiv_cont=0;
 
 void initSerialPort(void);
@@ -173,6 +173,7 @@ void receiveData(char expectedValue)
  unsigned char aux;
  char buffer[256];
  DWORD bytesRead;
+ unsigned short int topeReceived= sizeof(gb_receiv);
     
  if (gb_error==1)
  {
@@ -189,8 +190,11 @@ void receiveData(char expectedValue)
    {
     aux=(unsigned char)buffer[i];
     printf("%02X ",aux);
-    gb_receiv[gb_receiv_cont]= aux;
-    gb_receiv_cont++;
+    if (gb_receiv_cont<topeReceived)
+    {
+     gb_receiv[gb_receiv_cont]= aux;
+     gb_receiv_cont++;
+    }
    }
    printf("\n");        
   }
@@ -515,8 +519,8 @@ void SendMemRadio()
 //******************************************
 void ClearBuffers()
 {
- for (unsigned short i=0;i<sizeof(cadOut);i++){ cadOut[i]=' '; }
- cadOut[0]='\0';
+ //for (unsigned short i=0;i<sizeof(cadOut);i++){ cadOut[i]=' '; }
+ //cadOut[0]='\0';
  
  for (unsigned short i=0;i<sizeof(gb_receiv);i++){ gb_receiv[i]=0; }     
 
@@ -685,7 +689,7 @@ void GetParam(int argc, char **argv)
 //***************************************
 void ShowHelp()
 {
- printf(" WINHT66 by ackerman                            2026/01/04\n");
+ printf(" WINHT66 by ackerman                            2026/01/18\n");
  printf(" ----------------------------------------------------------\n");
  printf("  -p(number port) -- COM port\n");
  printf("  -d              -- receive dump mem radio in dataload.dat\n");
