@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!-- Code by ackerman -->
+<html lang="es">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UART HESENATE HT66</title>
+ </head>
+ <body>
+  <table>
+   <tbody>
+    <tr><th></th><td></td></tr> 
+    <tr>
+	 <td>
+	  <button type='button' id="btnDUMP" onclick="ExecDUMP()">DUMP</button>
+	  <label name="lblDumpProgress" id="lblDumpProgress">Progress:</label>
+	 </td>
+    </tr> 
+	<tr>
+	 <td><button type='button' id="btnSendRadio" onclick="ExecSendRadio()" disabled>Send Radio</button></td>
+	</tr>
+	<tr>
+     <td><button type='button' id="btnSaveFile" onclick="SaveFile()" disabled>Save</button></td>
+	</tr>
+    <tr>
+     <td>
+	  <button type='button' id="btnLoadFile" onclick="LoadFile()" disabled>Load</button>	  
+      <input type='file' id='fileinput' disabled>
+	 </td>
+	</tr>   
+    <tr>
+     <th>OUTPUT</th>
+	 <th>LOG</th>
+     <td></td><td></td>
+    </tr>	  
+    <tr>	 
+     <td><textarea id="txtareaOut" name="txtareaOut" rows="20" cols="54" readonly></textarea></td>
+	 <td><textarea id="txtareaLog" name="txtareaLog" rows="20" cols="54" readonly></textarea></td>
+    </tr>
+	<tr>
+	 <td><button type="button" onclick="window.location.href='index.html';">Back Frequencies web</button>
+	</tr>
+   </tbody>
+  </table>
+ 
+  <script>
+   var port;
+   var gb_error=0;
+   var gb_warn=0;
+   var gb_log="";
+   var gb_out="";
+   var gb_receiv= new Array(2048).fill(0);
+   var topeReceived= 2048;
+   var gb_receiv_cont=0;   
+   
+   //HANDSHAKE BEGIN
+   const trama0= new Uint8Array([0x02,0x54,0x39,0x39,0x39,0x52,0x41,0x4D]); //T999RAM
+   const trama1= new Uint8Array([0x02]);
+   const trama2= new Uint8Array([0x06]);
+   const trama3= new Uint8Array([0x05]);
+   const trama4= new Uint8Array([0x06]);
+   //HANDSHAKE END
+   //GET CHANNEL BEGIN
+   const trama5= new Uint8Array([0x52,0x00,0x00,0x0D]);
+   //GET CHANNEL END
+   
+   var gb_writer;
+   var gb_reader;
+   
+   var TIMEOUT= 100;   // Timeout (100 ms)
+   var TIMETXDELAY= 200;
+   var TIMETXDELAYCH= 1000;
+   var TIMEINIT= 1000;
+   var TIMETXRXDELAY= 200;
+   
+   
+   function delay(ms)
+   {    
+     return new Promise(resolve => setTimeout(resolve, ms));
+   }
+   
+   function ImprimeHex(data)
+   {
+    var aReturn="";
+	
+    try
+    {	
+     var tot= data.length;	 
+	
+     for (var i=0;i<tot;i++)
+	 {
+      aReturn+=data[i].toString(16).toUpperCase().padStart(2, '0');
+	 }
+	 //console.log(cadLog);	 	 
+	}
+	catch (error) 
+	{
+     console.error(error);
+    }	
+	
+	return aReturn;
+   }
+
+   
+   function ProgressBarDump(aText, aCur, aTot)
+   {
+    try
+	{
+     document.getElementById("lblDumpProgress").textContent = aText+": "+aCur.toString()+"/"+aTot.toString();
+	}
+	catch (error) 
+	{
+     console.error(error);
+    }	
+   }
+   
+   function ShowOut()
+   {
+    try
+	{
+     var contLine=0;
+	 var cad="";
+	
+     gb_log+= "\n\n";
+     gb_log+="Total:"+gb_receiv_cont+"\n";
+ 
+     cad= "[M31_Analog_Redio]\r\n";
+	 gb_log+= cad;
+	 gb_out+= cad;
+ 
+     for (var i=0; i<gb_receiv_cont;i++)
+     {
+	  cad= gb_receiv[i].toString(16).toUpperCase().padStart(2, '0') +" ";
+      gb_log+= cad;
+	  gb_out+= cad;
+  
+      contLine++;
+      if(contLine>=17)
+      {
+	   cad= " \r\n";
+       gb_log+= cad;
+	   gb_out+= cad;
+       contLine=0;
+      }
+     }
+	}
+	catch (error) 
+	{
+     console.error(error);
+    }		 
+   }
+    
+
+   async function SendHandshake()
+   {
+    var cad="";
+	
+    try
+	{
+	 await enviarTrama(trama0);
+	 await delay(TIMETXRXDELAY);
+	 
+	 gb_receiv_cont=0;
+	 ProgressBarDump("HANDSHAKE",1,5);
+	 cad= "TX:"+ImprimeHex(trama0);
+	 console.log(cad);	gb_log+= cad+"\n";
+	 const respuesta0= await receiveData(0x06);
+	 cad= "RX("+ respuesta0.length.toString()+"):"+ ImprimeHex(respuesta0);
+	 console.log(cad); gb_log+= cad+"\n"; //console.log("Respuesta 0:", respuesta0);	 
+	 await delay(TIMETXDELAYCH);
+
+     gb_receiv_cont=0;
+     ProgressBarDump("HANDSHAKE",2,5);
+	 await enviarTrama(trama1);
+	 await delay(TIMETXRXDELAY);
+	 cad="TX:"+ImprimeHex(trama1);
+	 console.log(cad); gb_log+= cad+"\n";
+	 const respuesta1= await receiveData(0x06);
+	 cad= "RX("+ respuesta1.length.toString()+"):"+ ImprimeHex(respuesta1);
+	 console.log(cad); gb_log+= cad+"\n"; //console.log("Respuesta 0:", respuesta0); //console.log("Respuesta 1:", respuesta1);	 ;
+	 await delay(TIMETXDELAYCH);
+
+     gb_receiv_cont=0;
+     ProgressBarDump("HANDSHAKE",3,5);
+	 await enviarTrama(trama2);
+	 await delay(TIMETXRXDELAY);
+	 cad= "TX:"+ImprimeHex(trama2);
+	 console.log(cad); gb_log+= cad+"\n";
+	 const respuesta2= await receiveData(0x06);
+	 cad= "RX("+ respuesta2.length.toString()+"):"+ ImprimeHex(respuesta2);
+	 console.log(cad); gb_log+= cad+"\n"; //console.log("Respuesta 0:", respuesta0); //console.log("Respuesta 2:", respuesta2);	 
+	 await delay(TIMETXDELAYCH);
+	
+	 gb_receiv_cont=0;
+	 ProgressBarDump("HANDSHAKE",4,5);
+	 await enviarTrama(trama3);
+	 await delay(TIMETXRXDELAY);
+	 cad="TX:"+ImprimeHex(trama3);
+	 console.log(cad); gb_log+= cad+"\n";
+	 const respuesta3= await receiveData(0xFF);
+	 cad= "RX("+ respuesta3.length.toString()+"):"+ ImprimeHex(respuesta3);
+	 console.log(cad); gb_log+= cad+"\n"; //console.log("Respuesta 0:", respuesta0); //console.log("Respuesta 3:", respuesta3);	 
+	 await delay(TIMETXDELAYCH);
+	
+	 gb_receiv_cont=0;
+	 ProgressBarDump("HANDSHAKE",5,5);
+	 await enviarTrama(trama4);
+	 await delay(TIMETXRXDELAY);
+	 cad= "TX:"+ImprimeHex(trama4);
+	 console.log(cad); gb_log+= cad+"\n";
+	 const respuesta4= await receiveData(0x06);		
+	 cad="RX("+ respuesta4.length.toString()+"):"+ ImprimeHex(respuesta4);
+	 console.log(cad); gb_log+=cad+"\n"; //console.log("Respuesta 0:", respuesta0); //console.log("Respuesta 4:", respuesta4);	 
+	 await delay(TIMETXDELAYCH);   
+	}
+	catch (error) 
+	{
+     console.error(error);
+    }
+   }
+   
+   async function DumpMemRadio()
+   {    
+	var cad="";
+   
+    try
+	{
+	 gb_receiv_cont=0;
+	
+     await SendHandshake();
+	 
+     gb_receiv_cont=0;
+     for (var i=0;i<18;i++)	
+     {
+	  ProgressBarDump("LINE",(i+1),18);
+      await enviarTrama(trama5);
+	  await delay(TIMETXRXDELAY);
+	  cad= "TX:"+ImprimeHex(trama5);
+	  console.log(cad); gb_log+= cad+"\n";
+      const respuesta5= await receiveData(0x57); //expected value 5700000D318DA802318DA802FFFFFFFFFF
+	  cad= "RX("+ respuesta5.length.toString()+"):"+ ImprimeHex(respuesta5)
+	  console.log(cad); gb_log+=cad+"\n";
+	  
+      trama5[2]+=0x0D; //Add channel
+	  await delay(TIMETXDELAYCH);
+     }	 	
+	}
+	catch (error) 
+	{
+     console.error(error);
+    }
+   }
+
+   async function conectar()
+   {
+    try
+	{
+	 gb_error=0;
+	 gb_warn=0;
+	
+     port = await navigator.serial.requestPort(); // Solicita puerto al usuario  
+     await port.open({ baudRate: 9600,dataBits: 8,stopBits: 1,parity: "none" }); //9600 baudios
+     console.log("Port open OK"); gb_log+= "Port open OK\n";
+	
+	 gb_writer = port.writable.getWriter();
+     gb_reader = port.readable.getReader();
+		
+	 await DumpMemRadio();
+	 
+	 await Desconectar();
+	}
+	catch (error) 
+	{
+     console.error(error);
+    }	
+   }
+
+   async function Desconectar()
+   { 
+    try
+	{
+     if (gb_reader)
+	 {
+      await gb_reader.cancel();
+      gb_reader.releaseLock();	
+	 }
+	 if (gb_writer)
+	 {
+	  await gb_writer.close();
+	  gb_writer.releaseLock();
+	 }
+	 	 
+	 if (port)
+	 {
+      await port.close();
+	 }
+     console.log("Port close OK");
+	}
+	catch (error) 
+	{
+     console.error(error);
+    }	
+   }   
+   
+   async function enviarTrama(datosArray)
+   {
+   /*
+    const writer = port.writable.getWriter();  
+    // Ejemplo de trama: [Inicio(0x02), ...datos, Fin(0x03)]
+    //const trama = new Uint8Array([0x02,0x54,0x39,0x39,0x39,0x52,0x41,0x4D]);
+	const trama = datosArray;
+  
+    await writer.write(trama);
+    writer.releaseLock(); // Libera el escritor para otros procesos
+    console.log("Trama enviada:", trama);
+	*/
+	try
+	{	
+	 await gb_writer.write(datosArray);
+	}
+    catch (error) 
+	{
+     console.error(error);
+    }
+   }
+  
+  
+   function procesarTrama(bytes)
+   {
+    // Aquí implementas la lógica para reconstruir tu trama
+    //console.log("Bytes recibidos:", bytes);
+	try
+	{
+	 console.log("Byte("+ bytes.length.toString()+"): " +bytes[0].toString());
+	}
+	catch (error) 
+	{
+     console.error(error);
+    }	
+   }
+  
+   async function receiveData(expectedValue)
+   {
+   /*
+    const timeoutMs = 2000;
+	const start = Date.now();
+	let buffer = [];
+   
+    //while (port.readable)
+	while (true)
+	{
+//     const reader = port.readable.getReader();
+     try {
+      while (true) 
+	  {
+        //const { value, done } = await reader.read();
+		const { value, done } = await gb_reader.read();
+        if (done) break; // Puerto cerrado
+        
+        // 'value' es un Uint8Array con los bytes recibidos
+        procesarTrama(value);
+		
+		return new Uint8Array(buffer);
+      }
+     } 
+	 catch (error) 
+	 {
+       console.error("Error leyendo:", error);
+     } 
+	 finally 
+	 {
+       //reader.releaseLock();
+	   gb_reader.releaseLock();
+     }
+    }
+*/
+    try
+    {
+     const timeoutMs = 1000;
+     const start = Date.now();
+     let buffer = [];
+	 var cad="";
+
+     while (true) 
+	 {
+      const { value, done } = await gb_reader.read();
+      if (done) break;
+
+      if (value) 
+	  {
+       buffer.push(...value);
+      
+	   if (buffer.length>0)
+	   {
+        
+		for (var i=0;i<buffer.length;i++)
+		{
+		 if (gb_receiv_cont<topeReceived)
+         {
+          gb_receiv[gb_receiv_cont]= buffer[i];
+          gb_receiv_cont++;
+         }	   
+		}
+		
+        if (buffer[0]!=expectedValue)
+        {
+         gb_warn=1;
+		 cad= "WARN!!! expected value "+ImprimeHex(expectedValue);
+         console.log(cad); gb_log+= cad+"\n"; 
+        }	
+	   }
+       return new Uint8Array(buffer);
+      }
+
+      if (Date.now() - start > timeoutMs) 
+	  {
+       throw new Error("Timeout esperando respuesta");
+      }
+     }
+	}
+	catch (error) 
+	{
+     console.error(error);
+    }		
+   }
+  
+   function ImprimeLog()
+   {
+    try
+    {
+     document.getElementById("txtareaLog").innerHTML = gb_log;
+    }
+    catch (error)	
+	{
+	 console.error(error);
+	}
+   }
+   
+   function ImprimeOut()
+   {
+    try
+    {
+     document.getElementById("txtareaOut").innerHTML = gb_out;
+    }
+    catch (error)	
+	{
+	 console.error(error);
+	}
+   }   
+  
+   async function ExecDUMP()
+   {
+    try
+    {    
+     gb_log="";
+	 gb_out="";
+
+	 ImprimeLog();
+	 ImprimeOut();
+	 
+	 console.log("UART init"); gb_log+= "UART init\n";
+	 await conectar();
+	 
+	 ShowOut();
+	 ImprimeLog();
+	 ImprimeOut();
+	 
+	 
+	 //console.log("UART conect");	 
+	 //enviarTrama();
+	 //Desconectar();
+	 //console.log("UART disconect");
+	 
+	}
+    catch (error)
+    {
+     console.error(error);
+    }   
+   }
+  
+   //Init
+   function onLoadFunctions()
+   {
+    try
+    {	 
+	}
+    catch (error)
+    {
+     console.error(error);
+    }
+   }
+  
+  
+   window.onload = onLoadFunctions;
+  </script>
+ </body>
+</html> 
