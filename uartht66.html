@@ -17,15 +17,19 @@
 	 </td>
     </tr> 
 	<tr>
-	 <td><button type='button' id="btnSendRadio" onclick="ExecSendRadio()" disabled>Send Radio</button></td>
+	 <td>
+	  <button type='button' id="btnSendRadio" onclick="ExecSendMemRadio();" disabled>Send Radio</button>
+	  <label name="lblSendOptions"><input type="checkbox" id="chkOptions" checked disabled> Options </label>
+	  <label name="lblSendChannels"><input type="checkbox" id="chkChannels" checked disabled> Channels </label>
+	 </td>
 	</tr>
 	<tr>
-     <td><button type='button' id="btnSaveFile" onclick="SaveFile()" disabled>Save</button></td>
+     <td><button type='button' id="btnSaveFile" onclick="ExecSaveDat();">Save</button></td>
 	</tr>
     <tr>
      <td>
-	  <button type='button' id="btnLoadFile" onclick="LoadFile()" disabled>Load</button>	  
-      <input type='file' id='fileinput' disabled>
+	  <button type='button' id="btnLoadFile" onclick="ExecLoadDat();">Load</button>	  
+      <input type='file' id='fileinput'>
 	 </td>
 	</tr>   
     <tr>
@@ -137,12 +141,14 @@
       contLine++;
       if(contLine>=17)
       {
-	   cad= " \r\n";
+	   cad= "\r\n";
        gb_log+= cad;
 	   gb_out+= cad;
        contLine=0;
       }
      }
+	 
+	 gb_log+= "Dump bytes:"+ gb_out.length.toString() +"\n";
 	}
 	catch (error) 
 	{
@@ -267,13 +273,14 @@
 		
 	 await DumpMemRadio();
 	 
-	 await Desconectar();
+	 await Desconectar();	 
 	}
 	catch (error) 
 	{
      console.error(error);
     }	
    }
+         
 
    async function Desconectar()
    { 
@@ -465,6 +472,11 @@
 	 ImprimeLog();
 	 ImprimeOut();
 	 
+	 if (gb_out.length<974)
+	 {	
+      alert('Error!!! The file dump is less than 974 bytes.');
+	 }	 
+	 
 	 
 	 //console.log("UART conect");	 
 	 //enviarTrama();
@@ -477,6 +489,164 @@
      console.error(error);
     }   
    }
+   
+   
+   async function ExecSendMemRadio()
+   {
+    try
+    {    
+     gb_log="";
+	 
+	 ImprimeLog();	 
+	 
+	 if (gb_out.length<974)
+	 {	
+      alert('Error!!! The file to send radio is less than 974 bytes.');
+      return;	  
+	 }	 
+	 
+	 //console.log("UART init"); gb_log+= "UART init\n";
+	 //await conectar();
+	 
+	 //ShowOut();
+	 //ImprimeLog();
+	 //ImprimeOut();	 
+	}
+    catch (error)
+    {
+     console.error(error);
+    }     
+   }
+   
+   
+   
+   //Save file data
+   function ExecSaveDat()
+   {
+    try
+    {
+     const content = gb_out;
+     const blob = new Blob([content], { type: 'text/plain' });
+     const url = URL.createObjectURL(blob);
+     const a = document.createElement('a');
+	
+	 if (gb_out.length<974)
+	 {	
+      alert('Error!!! The file to be generated is less than 974 bytes. It will not be saved.');
+	 }
+	 else
+	 {
+      a.href = url;
+      a.download = 'custom.dat';  // Set the default filename
+      document.body.appendChild(a);
+      a.click();  // Trigger the download
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);  // Clean up	  
+	 }
+	}
+    catch (error)
+    {
+     console.error(error);
+    }	 
+   }
+   
+   
+   
+   function LoadFromData(cadData)
+   {   	
+	try
+	{
+	 if (cadData.length<974)
+	 {
+	  alert('Error!!! The file to be read is less than 974 bytes. It will not be read.');
+	  return;
+	 }
+	 
+	 gb_out= cadData;
+	 
+	 gb_log= "";
+	 gb_log+= "Load file\n";
+	 
+	 ImprimeOut();
+	 ImprimeLog();
+    }
+    catch (error)
+    {
+     console.error(error);
+    }	 	
+   }
+   
+   
+   
+   function uploadLocalFile(nameFile)
+   {
+    var input, file, fr;
+	
+    try    
+	{
+     file = nameFile || "";
+ 	    
+     if (typeof window.FileReader !== 'function') 
+     {
+      console.log("The file API isn't supported on this browser.");
+      return;
+     };
+	    
+     input = document.getElementById('fileinput');
+		
+     if (file == "") 
+     {
+      if (!input) 
+      {
+       console.log("Couldn't find the fileinput element.");
+       return;
+      }
+      else if (!input.files) {
+				console.log("This browser doesn't seem to support the 'files' property of file inputs.");
+				return;
+			}
+			else if (!input.files[0]) {
+				console.log("Please select a file before clicking 'Load'");
+				return;
+			}
+			else {
+				file = input.files[0];
+			};
+			  					
+			fr = new FileReader();
+			fr.onload = receivedLocalBinary;
+			fr.readAsBinaryString(file);
+			
+		} else {
+		};
+
+		
+
+        function receivedLocalBinary()
+		{            		
+	  	 //alert(fr.result);	         		
+		 LoadFromData(fr.result);
+        }
+	 }
+	 catch (error)
+     {
+      console.error(error);
+     }
+    }
+   
+   
+   function ExecLoadDat()
+   {
+    try
+    {	
+     uploadLocalFile();
+    }
+	catch (error)
+    {
+     console.error(error);
+    }
+   }
+   
   
    //Init
    function onLoadFunctions()
