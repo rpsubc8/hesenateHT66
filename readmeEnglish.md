@@ -264,3 +264,12 @@ In the DOSBOX configuration file, you must enable the directserial options and s
 <pre>
  serial1=directserial realport:COM14
 </pre>
+<br>
+I have also added an HTML5 version with webserial in Google Chrome, Microsoft Edge, and Opera, accessible via the <b>back uart web</b> button.<br><br>
+<a href='http://rpsubc8.github.io/hesenateHT66/uartht66.html'>UART HT66</a><br><br>
+We just need to select the COM1 port from the browser:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewUartSelectWebSerial.gif'></center>
+Radio dumping is permitted, as well as sending channels and options:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewUartDumpWebSerial.gif'></center>
+It is advisable to reload the main page each time a read operation or radio transmission is performed to ensure that the UART port is not blocked or contains unusual data.<br>
+At any time, we can return to the HTML5 frequencies from the <b>back frequencies web</b> button.
