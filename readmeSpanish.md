@@ -262,6 +262,10 @@ En el fichero de configuración del DOSBOX se debe activar las opciones de direc
 <pre>
  serial1=directserial realport:COM14
 </pre>
+Las pruebas que he realizado con el VirtualBOX a la hora de leer de puerto serie, son mucho mejores, permitiendo el DUMP, tanto desde Windows 98, como desde el modo MSDOS.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/virtualboxWin98.gif'></center>
+Tan sólo debemos de redireccionar nuestro puerto físico real COM5 sobre el COM1 del emulador.
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/virtualboxConfig.gif'></center>
 <br>
 También he añadido una versión para HTML5 con webserial en Google Chrome, Microsoft Edge y Opera, desde el botón <b>back uart web</b>.<br><br>
 <a href='http://rpsubc8.github.io/hesenateHT66/uartht66.html'>UART HT66</a><br><br>
