@@ -257,8 +257,19 @@ También he añadido una versión para MSDOS con DOSBOX usando el puerto COM1.
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewcpsdosht66.gif'></center>
 <a href='http://rpsubc8.github.io/hesenateHT66/cpsHT66/dosht66/DOSHT66.EXE'>DOSHT66.EXE</a><br>
 <br>
-La opción de lectura (-d) no funciona muy bien, pero el envio de datos hacia la radio, si, por lo que puede ser útil.<br>
+La opción de lectura (-d) no funciona muy bien en DOSBOX, pero el envio de datos hacia la radio, si, por lo que puede ser útil.<br>
 En el fichero de configuración del DOSBOX se debe activar las opciones de directserial y especificar el puerto físico real, que si fuera el COM14,sería:
 <pre>
  serial1=directserial realport:COM14
 </pre>
+<br>
+También he añadido una versión para HTML5 con webserial en Google Chrome, Microsoft Edge y Opera, desde el botón <b>back uart web</b>.<br><br>
+<a href='http://rpsubc8.github.io/hesenateHT66/uartht66.html'>UART HT66</a><br><br>
+Tan sólo debemos seleccionar el puerto COM1 desde el navegador:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewUartSelectWebSerial.gif'></center>
+Se permite el dump de la radio, así como en elvío de los canales y las opciones:
+<center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewUartDumpWebSerial.gif'></center>
+Es recomendable volver a recargar la página principal, cada vez que se realiza una operación de lectura o envió a radio, para garantizar que el puerto UART no esté bloqueado o con datos raros.<br>
+En cualquier momento, podemos volver al html5 de las frecuencias desde el botón <b>back frequencies web</b>.
+
+
