@@ -271,7 +271,7 @@ También he añadido una versión para HTML5 con webserial en Google Chrome, Mic
 <a href='http://rpsubc8.github.io/hesenateHT66/uartht66.html'>UART HT66</a><br><br>
 Tan sólo debemos seleccionar el puerto COM1 desde el navegador:
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewUartSelectWebSerial.gif'></center>
-Se permite el dump de la radio, así como en elvío de los canales y las opciones:
+Se permite el dump de la radio, así como el envío de los canales y las opciones:
 <center><img src='https://raw.githubusercontent.com/rpsubc8/hesenateHT66/main/preview/previewUartDumpWebSerial.gif'></center>
 Es recomendable volver a recargar la página principal, cada vez que se realiza una operación de lectura o envio a radio, para garantizar que el puerto UART no esté bloqueado o con datos raros.<br>
 En cualquier momento, podemos volver al html5 de las frecuencias desde el botón <b>back frequencies web</b>.
